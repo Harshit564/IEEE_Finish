@@ -1,0 +1,117 @@
+{
+  "project_info": {
+    "project_number": "1082379813969",
+    "firebase_url": "https://ieee-2020.firebaseio.com",
+    "project_id": "ieee-2020",
+    "storage_bucket": "ieee-2020.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1082379813969:android:8d63cc815e60dee6266470",
+        "android_client_info": {
+          "package_name": "com.masky.ieeepecadmindeadline"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1082379813969-m9njt8bvres9fq8n33ll8undd5k3d75n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.masky.ieeepecadmindeadline",
+            "certificate_hash": "075b9504d4968f52efb06dcad51cf2a8d16ca93c"
+          }
+        },
+        {
+          "client_id": "1082379813969-gn1uqjhi5umti6cq7bv9joeok2fqrc7k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA9bv3a_iQR369PC0119zlaZt63FEA1ui4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1082379813969-gn1uqjhi5umti6cq7bv9joeok2fqrc7k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1082379813969:android:a40e359ad41b0c1a266470",
+        "android_client_info": {
+          "package_name": "com.masky.ieeepecstudentdeadline"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1082379813969-8n3d18k6u5ob5ll7bqlf5536brfn2vgc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.masky.ieeepecstudentdeadline",
+            "certificate_hash": "dee231aeb8470667917487f69571f1629cd95971"
+          }
+        },
+        {
+          "client_id": "1082379813969-sim6jqp10vu88nfmho7mnlern7h1ivjo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.masky.ieeepecstudentdeadline",
+            "certificate_hash": "b05d9ef833ac6f53b5780a53db8b141f68ec0b17"
+          }
+        },
+        {
+          "client_id": "1082379813969-si2o6cl41ossnrursa9sk84k58l5o7rg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.masky.ieeepecstudentdeadline",
+            "certificate_hash": "b35f8b37ff78cc62b6f48b92abe796d7b3e0cef9"
+          }
+        },
+        {
+          "client_id": "1082379813969-kgs4ph61net76drsttnkpv0j8o41fbh6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.masky.ieeepecstudentdeadline",
+            "certificate_hash": "71f6df0d3dbdfc67c86fec069e30d34b2a780f94"
+          }
+        },
+        {
+          "client_id": "1082379813969-5tp8ht5bvdrsht9fjvb7na0uh8bt0vfj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.masky.ieeepecstudentdeadline",
+            "certificate_hash": "075b9504d4968f52efb06dcad51cf2a8d16ca93c"
+          }
+        },
+        {
+          "client_id": "1082379813969-gn1uqjhi5umti6cq7bv9joeok2fqrc7k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA9bv3a_iQR369PC0119zlaZt63FEA1ui4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1082379813969-gn1uqjhi5umti6cq7bv9joeok2fqrc7k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
