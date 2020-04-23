@@ -10,7 +10,7 @@ import 'package:ieeepecstudentdeadline/Widgets/moving_text.dart';
 import 'package:ieeepecstudentdeadline/constants.dart';
 import 'package:ieeepecstudentdeadline/pages/sponsors_page.dart';
 import 'package:ieeepecstudentdeadline/pages/team_members/members_page.dart';
-import 'package:ieeepecstudentdeadline/pages/workshops/workshops_page.dart';
+import 'package:ieeepecstudentdeadline/pages/workshops/main_tab_screen.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'events_page.dart';
 import 'news/news_page.dart';
@@ -193,7 +193,7 @@ class _HomePageState extends State<HomePage> {
                   iconData: Icons.chrome_reader_mode,
                   text: 'Workshops',
                   function: () =>
-                      Navigator.pushNamed(context, WorkshopsPage.routeName),
+                      Navigator.pushNamed(context, TabScreen.routeName),
                 ),
                 IconCard(
                   iconData: Icons.apps,
