@@ -10,7 +10,7 @@ import 'package:ieeepecstudentdeadline/Widgets/moving_text.dart';
 import 'package:ieeepecstudentdeadline/constants.dart';
 import 'package:ieeepecstudentdeadline/pages/sponsors_page.dart';
 import 'package:ieeepecstudentdeadline/pages/team_members/members_page.dart';
-import 'package:ieeepecstudentdeadline/pages/workshops/workshops_page.dart';
+import 'package:ieeepecstudentdeadline/pages/workshops/main_tab_screen.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'events_page.dart';
 import 'news/news_page.dart';
@@ -163,7 +163,7 @@ class _HomePageState extends State<HomePage> {
             style: TextStyle(
                 fontFamily: 'Montserrat',
                 fontWeight: FontWeight.bold,
-                fontSize: 22.0),
+                fontSize: 20.0),
           ),
           centerTitle: true,
         ),
@@ -178,7 +178,7 @@ class _HomePageState extends State<HomePage> {
               imageUrl_5: imageCarouselUrl_5,
             ),
             SizedBox(
-              height: 75.0,
+              height: 50.0,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -193,7 +193,7 @@ class _HomePageState extends State<HomePage> {
                   iconData: Icons.chrome_reader_mode,
                   text: 'Workshops',
                   function: () =>
-                      Navigator.pushNamed(context, WorkshopsPage.routeName),
+                      Navigator.pushNamed(context, TabScreen.routeName),
                 ),
                 IconCard(
                   iconData: Icons.apps,
@@ -230,7 +230,7 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
             SizedBox(
-              height: 75.0,
+              height: 50.0,
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8.0),
@@ -242,10 +242,10 @@ class _HomePageState extends State<HomePage> {
                     'Upcoming Events',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      fontFamily: 'Montserrat',
-                      fontSize: 20.0,
-                      fontWeight: FontWeight.w500,
-                    ),
+                        fontFamily: 'Montserrat',
+                        fontSize: 20.0,
+                        fontWeight: FontWeight.w500,
+                        color: Color(0xff5cb3bc)),
                   ),
                 ),
               ),

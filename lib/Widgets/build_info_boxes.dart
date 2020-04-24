@@ -22,6 +22,7 @@ Widget buildInfoBoxes({Icon icon, String value}) {
             value,
             style: TextStyle(
               fontFamily: 'Montserrat',
+              color: Color(0xff5cb3bc),
               fontSize: 15.0,
             ),
           ),

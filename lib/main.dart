@@ -4,10 +4,14 @@ import 'package:ieeepecstudentdeadline/OnBoardingPages/onboarding_screen.dart';
 import 'package:ieeepecstudentdeadline/pages/about_page.dart';
 import 'package:ieeepecstudentdeadline/pages/app_coordinators/app_coordinators_page.dart';
 import 'package:ieeepecstudentdeadline/pages/news/news_page.dart';
+import 'package:ieeepecstudentdeadline/pages/otp_verify_page.dart';
 import 'package:ieeepecstudentdeadline/pages/sessions/sessions_page.dart';
 import 'package:ieeepecstudentdeadline/pages/sponsors_page.dart';
 import 'package:ieeepecstudentdeadline/pages/team_members/members_page.dart';
-import 'package:ieeepecstudentdeadline/pages/workshops/workshops_page.dart';
+import 'package:ieeepecstudentdeadline/pages/workshops/cs_workshops.dart';
+import 'package:ieeepecstudentdeadline/pages/workshops/main_tab_screen.dart';
+import 'package:ieeepecstudentdeadline/pages/workshops/pes_workshops.dart';
+import 'package:ieeepecstudentdeadline/pages/workshops/wie_workshops.dart';
 import 'package:provider/provider.dart';
 import 'Widgets/theme.dart';
 import 'pages/events_page.dart';
@@ -48,7 +52,6 @@ class MaterialAppWithTheme extends StatelessWidget {
         LoginPage.routeName: (context) => LoginPage(),
         HomePage.routeName: (context) => HomePage(),
         EventsPage.routeName: (context) => EventsPage(),
-        WorkshopsPage.routeName: (context) => WorkshopsPage(),
         SessionsPage.routeName: (context) => SessionsPage(),
         SponsorsPage.routeName: (context) => SponsorsPage(),
         AboutPage.routeName: (context) => AboutPage(),
@@ -56,6 +59,11 @@ class MaterialAppWithTheme extends StatelessWidget {
         NewsPage.routeName: (context) => NewsPage(),
         AppCoordinatorsPage.routeName: (context) => AppCoordinatorsPage(),
         OnboardingScreen.routeName: (context) => OnboardingScreen(),
+        CSWorkshopsPage.routeName: (context) => CSWorkshopsPage(),
+        PESWorkshopsPage.routeName: (context) => PESWorkshopsPage(),
+        WIEWorkshopsPage.routeName: (context) => WIEWorkshopsPage(),
+        TabScreen.routeName: (context) => TabScreen(),
+        OtpVerifyPage.routeName:(context) => OtpVerifyPage(),
       },
     );
   }

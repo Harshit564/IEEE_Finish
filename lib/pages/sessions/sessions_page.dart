@@ -22,7 +22,7 @@ class _SessionsPageState extends State<SessionsPage> {
           'Sessions',
           style: TextStyle(
             fontWeight: FontWeight.bold,
-            fontSize: 22.0,
+            fontSize: 20.0,
             fontFamily: 'Montserrat',
           ),
         ),

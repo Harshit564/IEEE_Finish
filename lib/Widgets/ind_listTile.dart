@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:ieeepecstudentdeadline/constants.dart';
 
 class IndListTile extends StatelessWidget {
   final String name;
@@ -51,7 +50,6 @@ class IndListTile extends StatelessWidget {
                 fontFamily: 'Montserrat',
                 fontWeight: FontWeight.bold,
                 fontStyle: FontStyle.italic,
-                color: Color(0xff5cb3bc),
               ),
             ),
           ),

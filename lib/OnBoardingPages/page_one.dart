@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:ieeepecstudentdeadline/Utils/info.dart';
 import 'package:ieeepecstudentdeadline/Utils/mypainter.dart';
 import 'package:ieeepecstudentdeadline/pages/login_page.dart';
+import 'package:ieeepecstudentdeadline/pages/otp_verify_page.dart';
 
 class PageOne extends StatelessWidget {
   @override
@@ -44,7 +45,7 @@ class PageOne extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => LoginPage()),
+                                builder: (context) => OtpVerifyPage()),
                           );
                         },
                         child: Text(
@@ -91,7 +92,8 @@ class PageOne extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.only(
                       left: SizeConfig.blockSizeHorizontal * 14),
-                  child: Image.asset('assets/images/ieee_cs.png',
+                  child: Image.asset(
+                    'assets/images/ieee_cs.png',
                     fit: BoxFit.contain,
                     width: 75,
                     height: 75,

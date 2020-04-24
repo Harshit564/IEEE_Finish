@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:ieeepecstudentdeadline/constants.dart';
 
 Widget attendanceButton({@required Function function}) {
   return Padding(
@@ -17,9 +16,9 @@ Widget attendanceButton({@required Function function}) {
             'Attendance',
             textAlign: TextAlign.center,
             style: TextStyle(
-              fontFamily: 'Montserrat',
-              fontSize: 18.0,
-            ),
+                fontFamily: 'Montserrat',
+                fontSize: 18.0,
+                color: Color(0xff5cb3bc)),
           ),
         ),
       ),

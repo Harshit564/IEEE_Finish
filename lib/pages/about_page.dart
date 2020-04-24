@@ -25,7 +25,7 @@ class _AboutPageState extends State<AboutPage> {
           style: TextStyle(
               fontFamily: 'Montserrat',
               fontWeight: FontWeight.bold,
-              fontSize: 22.0),
+              fontSize: 20.0),
         ),
       ),
       body: ListView(

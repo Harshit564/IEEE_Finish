@@ -1,15 +1,19 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class NewsListTile extends StatelessWidget {
   final String newsTitle;
   final String newsDescription;
   final String imageUrl;
+  final String webUrl;
 
   NewsListTile({
     @required this.imageUrl,
     @required this.newsTitle,
     @required this.newsDescription,
+    @required this.webUrl,
   });
 
   @override
@@ -84,6 +88,68 @@ class NewsListTile extends StatelessWidget {
                     style: TextStyle(fontFamily: 'Montserrat'),
                     textAlign: TextAlign.justify,
                   ),
+                ),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              /*            Padding(
+                padding: const EdgeInsets.only(
+                  left: 8.0,
+                  bottom: 8.0,
+                  right: 8.0,
+                ),
+                child: Row(
+                  children: <Widget>[
+                    Text('Visit Website: ',
+                      style: TextStyle(
+                        fontFamily: 'Montserrat',
+                        fontWeight: FontWeight.bold,
+                        //color: Color(0xff607D8B),
+                      ),),
+                    Link(
+                      child: Text('Tap to visit the Website',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontFamily: 'Montserrat',
+                            color: Colors.blue,
+                            decoration: TextDecoration.underline
+                        ),
+                      ),
+                      url: webUrl,
+                    )
+                  ],
+                ),
+              ),
+*/
+
+              Padding(
+                padding: const EdgeInsets.only(
+                  left: 8.0,
+                  bottom: 8.0,
+                  right: 8.0,
+                ),
+                child: Row(
+                  children: <Widget>[
+                    Text(
+                      'Visit Website: ',
+                      style: TextStyle(
+                        fontFamily: 'Montserrat',
+                        fontWeight: FontWeight.bold,
+                        //color: Color(0xff607D8B),
+                      ),
+                    ),
+                    InkWell(
+                        child: new Text(
+                          'Tap to visit the Website',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontFamily: 'Montserrat',
+                              color: Colors.blue,
+                              decoration: TextDecoration.underline),
+                        ),
+                        onTap: () => launch(webUrl)),
+                  ],
                 ),
               ),
             ],

@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 Widget indNameLabel({@required String name}) {
@@ -5,6 +6,7 @@ Widget indNameLabel({@required String name}) {
     padding: const EdgeInsets.all(8.0),
     child: Text(
       name,
+      textAlign: TextAlign.center,
       style: TextStyle(
         fontFamily: 'Montserrat',
         fontWeight: FontWeight.w700,

@@ -1,5 +1,5 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:ieeepecstudentdeadline/constants.dart';
 
 Widget indHostLabel({@required String hostName}) {
   return Padding(
@@ -11,6 +11,7 @@ Widget indHostLabel({@required String hostName}) {
     ),
     child: Text(
       'Event Host : $hostName',
+      textAlign: TextAlign.center,
       style: TextStyle(
         fontFamily: 'Montserrat',
         color: Color(0xff5cb3bc),

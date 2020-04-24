@@ -23,7 +23,7 @@ class _AppCoordinatorsPageState extends State<AppCoordinatorsPage> {
           style: TextStyle(
               fontFamily: 'Montserrat',
               fontWeight: FontWeight.bold,
-              fontSize: 22.0),
+              fontSize: 20.0),
         ),
         centerTitle: true,
       ),

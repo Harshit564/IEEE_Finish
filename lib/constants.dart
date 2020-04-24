@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 const String appbarLabelHomePage = "IEEE Student Branch";
 const String facebookPageURL = "https://www.facebook.com/IEEEPEC/";
 const String instagramPageURL = "https://www.instagram.com/ieeepec/";
-const String twitterPageUrl = "https://twitter.com/ieee_pec?lang=en";
+const String linkedinPageUrl = "https://www.linkedin.com/company/ieee-pec/";
 
 const String facebookLogoPath = "assets/images/facebook.png";
 const String instagramLogoPath = "assets/images/instagram.png";
-const String twitterLogoPath = "assets/images/twitter.png";
+const String linkedinLogoPath = "assets/images/linkedin.png";
 const String myProfilePageLogoPath = "assets/images/profileLogo.png";
 
 const String drawerFollowLine = "Follow us on :)";
@@ -21,6 +21,7 @@ const String firestoreDescriptionLabel = "Description";
 const String firestoreLocationLabel = "Location";
 const String firestoreHostNameLabel = "Host Name";
 const String firestoreImageUrl = "photoURL";
+const String firestoreWebUrl = "webUrl";
 
 const String firestoreTeamMemberNameLabel = "Name";
 const String firestoreTeamMemberEmailIDLabel = "EmailID";

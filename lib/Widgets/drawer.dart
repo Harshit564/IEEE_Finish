@@ -22,7 +22,7 @@ class _HomePageDrawerState extends State<HomePageDrawer> {
   String studentName = "";
   String emailId = "";
   final FirebaseAuth _auth = FirebaseAuth.instance;
-  bool state = false;
+  static bool state = false;
 
   Future<void> _getInfo() async {
     sharedPreferences = await SharedPreferences.getInstance();
@@ -186,8 +186,8 @@ class _HomePageDrawerState extends State<HomePageDrawer> {
                       imagePath: instagramLogoPath,
                     ),
                     _buildURLLogos(
-                      imagePath: twitterLogoPath,
-                      pageURL: twitterPageUrl,
+                      imagePath: linkedinLogoPath,
+                      pageURL: linkedinPageUrl,
                     ),
                   ],
                 ),

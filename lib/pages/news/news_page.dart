@@ -23,7 +23,7 @@ class _NewsPageState extends State<NewsPage> {
           style: TextStyle(
               fontFamily: 'Montserrat',
               fontWeight: FontWeight.bold,
-              fontSize: 22.0),
+              fontSize: 20.0),
         ),
         centerTitle: true,
       ),
@@ -43,11 +43,13 @@ class _NewsPageState extends State<NewsPage> {
                     final newsTitle = news.data[firestoreNewsTitleLabel];
                     final newsDescription =
                         news.data[firestoreNewsDescriptionLabel];
+                    final newswebUrl = news.data[firestoreWebUrl];
 
                     final newsListTile = NewsListTile(
                       imageUrl: newsImageUrl,
                       newsTitle: newsTitle,
                       newsDescription: newsDescription,
+                      webUrl: newswebUrl,
                     );
 
                     newsListTiles.add(newsListTile);

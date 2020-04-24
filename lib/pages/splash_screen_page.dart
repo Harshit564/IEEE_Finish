@@ -10,7 +10,7 @@ class SplashScreen extends StatefulWidget {
   _SplashScreenState createState() => _SplashScreenState();
 }
 
-Widget mainLogo(String mainLogoPath){
+Widget mainLogo(String mainLogoPath) {
   return Hero(
     tag: 'logo',
     child: Padding(
@@ -25,7 +25,7 @@ Widget mainLogo(String mainLogoPath){
   );
 }
 
-Widget subLogos(String subLogosPath){
+Widget subLogos(String subLogosPath) {
   return Expanded(
     child: Padding(
       padding: const EdgeInsets.all(15.0),

@@ -8,7 +8,7 @@ Widget aboutLineText({
   return Column(
     children: <Widget>[
       Container(
-        padding: EdgeInsets.all(8.0),
+        padding: EdgeInsets.all(20.0),
         width: MediaQuery.of(context).size.width,
         height: 250.0,
         child: Image.asset(mainLogoImagePath),

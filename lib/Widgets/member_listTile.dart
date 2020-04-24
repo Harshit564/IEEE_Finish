@@ -7,6 +7,7 @@ class IndMemberListTile extends StatelessWidget {
   final String memberEmailID;
   final String memberContact;
   final String memberPosition;
+  final int priority;
 
   IndMemberListTile({
     @required this.imageUrl,
@@ -14,6 +15,7 @@ class IndMemberListTile extends StatelessWidget {
     @required this.memberEmailID,
     @required this.memberContact,
     @required this.memberPosition,
+    @required this.priority,
   });
 
   Widget makeListTile(BuildContext context) {

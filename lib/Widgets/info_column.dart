@@ -24,6 +24,9 @@ Widget infoListView({
       imageWidget(context: context, url: imageUrl),
       indNameLabel(name: name),
       indHostLabel(hostName: hostName),
+      SizedBox(
+        height: 20,
+      ),
       Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
@@ -46,6 +49,9 @@ Widget infoListView({
           aboutLine(),
           indDescriptionLabel(
             description: description,
+          ),
+          SizedBox(
+            height: 20,
           ),
           attendanceButton(
             function: attendanceButtonFunction,

@@ -71,7 +71,7 @@ class _MyProfilePageState extends State<MyProfilePage> {
           onPressed: () {
             handleSignOut().then((val) {
               preferences.clear().then((val) {
-                exit(0);
+                Navigator.pushNamed(context, LoginPage.routeName);
               });
             });
           },
@@ -99,10 +99,10 @@ class _MyProfilePageState extends State<MyProfilePage> {
               text,
               textAlign: TextAlign.center,
               style: TextStyle(
-                fontFamily: 'Montserrat',
-                fontSize: 18.0,
-                fontWeight: FontWeight.w500,
-              ),
+                  fontFamily: 'Montserrat',
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.w500,
+                  color: Color(0xff5cb3bc)),
             ),
           ),
         ),
@@ -141,19 +141,19 @@ class _MyProfilePageState extends State<MyProfilePage> {
                     'Proficiency',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      fontFamily: 'Montserrat',
-                      fontSize: 18.0,
-                      fontWeight: FontWeight.w500,
-                    ),
+                        fontFamily: 'Montserrat',
+                        fontSize: 18.0,
+                        fontWeight: FontWeight.w500,
+                        color: Color(0xff5cb3bc)),
                   )
                 : Text(
                     'Non-Proficiency',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      fontFamily: 'Montserrat',
-                      fontSize: 18.0,
-                      fontWeight: FontWeight.w500,
-                    ),
+                        fontFamily: 'Montserrat',
+                        fontSize: 18.0,
+                        fontWeight: FontWeight.w500,
+                        color: Color(0xff5cb3bc)),
                   ),
           ),
         ),
@@ -188,7 +188,7 @@ class _MyProfilePageState extends State<MyProfilePage> {
           style: TextStyle(
               fontFamily: 'Montserrat',
               fontWeight: FontWeight.bold,
-              fontSize: 22.0),
+              fontSize: 20.0),
         ),
         centerTitle: true,
         actions: <Widget>[

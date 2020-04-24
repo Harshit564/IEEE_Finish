@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:ieeepecstudentdeadline/constants.dart';
 
 Widget aboutLine() {
   return Padding(
