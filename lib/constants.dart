@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 const String appbarLabelHomePage = "IEEE Student Branch";
 const String facebookPageURL = "https://www.facebook.com/IEEEPEC/";
 const String instagramPageURL = "https://www.instagram.com/ieeepec/";

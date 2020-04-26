@@ -1,7 +1,8 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:ieeepecstudentdeadline/Widgets/member_listTile.dart';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+import 'package:ieeepecstudentdeadline/Widgets/member_listTile.dart';
 import '../../constants.dart';
 
 class AppCoordinatorsPage extends StatefulWidget {

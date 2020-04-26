@@ -1,6 +1,7 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class NewsListTile extends StatelessWidget {
@@ -23,6 +24,7 @@ class NewsListTile extends StatelessWidget {
       child: Container(
         width: MediaQuery.of(context).size.width,
         child: Card(
+          color: Color(0xffCBE7EA),
           elevation: 8.0,
           child: Column(
             children: <Widget>[
@@ -61,10 +63,10 @@ class NewsListTile extends StatelessWidget {
                         newsTitle,
                         textAlign: TextAlign.justify,
                         style: TextStyle(
-                          fontFamily: 'Montserrat',
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18.0,
-                        ),
+                            fontFamily: 'Montserrat',
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18.0,
+                            color: Colors.black),
                         //textAlign: TextAlign.justify,
                       ),
                     ),
@@ -73,7 +75,10 @@ class NewsListTile extends StatelessWidget {
               ),
               Padding(
                 padding: const EdgeInsets.all(1.0),
-                child: Divider(),
+                child: Divider(
+                  thickness: 1.0,
+                  color: Colors.black,
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.only(
@@ -85,7 +90,8 @@ class NewsListTile extends StatelessWidget {
                   alignment: Alignment.centerLeft,
                   child: Text(
                     newsDescription,
-                    style: TextStyle(fontFamily: 'Montserrat'),
+                    style: TextStyle(
+                        fontFamily: 'Montserrat', color: Colors.black),
                     textAlign: TextAlign.justify,
                   ),
                 ),
@@ -134,10 +140,11 @@ class NewsListTile extends StatelessWidget {
                     Text(
                       'Visit Website: ',
                       style: TextStyle(
-                        fontFamily: 'Montserrat',
-                        fontWeight: FontWeight.bold,
-                        //color: Color(0xff607D8B),
-                      ),
+                          fontFamily: 'Montserrat',
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black
+                          //color: Color(0xff607D8B),
+                          ),
                     ),
                     InkWell(
                         child: new Text(

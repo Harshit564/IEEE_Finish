@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:ieeepecstudentdeadline/OnBoardingPages/onboarding_screen.dart';
 
-import 'login_page.dart';
+import 'package:ieeepecstudentdeadline/OnBoardingPages/onboarding_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   static const String routeName = "/splash-screen-page";

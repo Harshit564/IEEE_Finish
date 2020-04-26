@@ -1,7 +1,8 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:ieeepecstudentdeadline/Widgets/ind_news_tile.dart';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+import 'package:ieeepecstudentdeadline/Widgets/ind_news_tile.dart';
 import '../../constants.dart';
 
 class NewsPage extends StatefulWidget {
@@ -27,49 +28,51 @@ class _NewsPageState extends State<NewsPage> {
         ),
         centerTitle: true,
       ),
-      body: SafeArea(
-        child: ListView(
-          children: <Widget>[
-            StreamBuilder(
-              stream: _fireStore
-                  .collection(fireStoreNewsCollectionLabel)
-                  .snapshots(),
-              builder: (context, snapshot) {
-                if (snapshot.hasData) {
-                  final newsList = snapshot.data.documents;
-                  List<NewsListTile> newsListTiles = [];
-                  for (var news in newsList) {
-                    final newsImageUrl = news.data[firestoreImageUrl];
-                    final newsTitle = news.data[firestoreNewsTitleLabel];
-                    final newsDescription =
-                        news.data[firestoreNewsDescriptionLabel];
-                    final newswebUrl = news.data[firestoreWebUrl];
+      body: Container(
+        child: SafeArea(
+          child: ListView(
+            children: <Widget>[
+              StreamBuilder(
+                stream: _fireStore
+                    .collection(fireStoreNewsCollectionLabel)
+                    .snapshots(),
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    final newsList = snapshot.data.documents;
+                    List<NewsListTile> newsListTiles = [];
+                    for (var news in newsList) {
+                      final newsImageUrl = news.data[firestoreImageUrl];
+                      final newsTitle = news.data[firestoreNewsTitleLabel];
+                      final newsDescription =
+                          news.data[firestoreNewsDescriptionLabel];
+                      final newswebUrl = news.data[firestoreWebUrl];
 
-                    final newsListTile = NewsListTile(
-                      imageUrl: newsImageUrl,
-                      newsTitle: newsTitle,
-                      newsDescription: newsDescription,
-                      webUrl: newswebUrl,
+                      final newsListTile = NewsListTile(
+                        imageUrl: newsImageUrl,
+                        newsTitle: newsTitle,
+                        newsDescription: newsDescription,
+                        webUrl: newswebUrl,
+                      );
+
+                      newsListTiles.add(newsListTile);
+                    }
+                    return Column(
+                      children: newsListTiles,
                     );
-
-                    newsListTiles.add(newsListTile);
                   }
-                  return Column(
-                    children: newsListTiles,
-                  );
-                }
-                return Center(
-                  child: Container(
-                    child: Center(
-                      child: Text(
-                        'Unexpected Error Occurred',
+                  return Center(
+                    child: Container(
+                      child: Center(
+                        child: Text(
+                          'Unexpected Error Occurred',
+                        ),
                       ),
                     ),
-                  ),
-                );
-              },
-            ),
-          ],
+                  );
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );

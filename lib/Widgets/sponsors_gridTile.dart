@@ -1,5 +1,6 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+
+import 'package:cached_network_image/cached_network_image.dart';
 
 Widget SponsorsGridTile({
   @required String sponsorName,
@@ -7,7 +8,7 @@ Widget SponsorsGridTile({
   @required BuildContext context,
 }) {
   return Card(
-    //color: Colors.grey[700],
+    color: Color(0xffCBE7EA),
     elevation: 10,
     child: GridTile(
       child: Padding(
@@ -40,7 +41,8 @@ Widget SponsorsGridTile({
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
                   sponsorName,
-                  style: TextStyle(fontFamily: 'Montserrat'),
+                  style:
+                      TextStyle(fontFamily: 'Montserrat', color: Colors.black),
                 ),
               ),
             ),

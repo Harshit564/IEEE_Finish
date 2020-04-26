@@ -7,7 +7,7 @@ Widget buttons({Function function, Widget widget}) {
     shape: RoundedRectangleBorder(
       borderRadius: new BorderRadius.circular(30.0),
     ),
-    color: Color(0xffCBE7EA),
+    color: Color(0xff5cb3bc),
     elevation: 6.0,
   );
 }

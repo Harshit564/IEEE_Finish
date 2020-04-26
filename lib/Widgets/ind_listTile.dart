@@ -17,6 +17,7 @@ class IndListTile extends StatelessWidget {
         bottom: 5.0,
       ),
       child: Card(
+        color: Color(0xffCBE7EA),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(45.0),
         ),
@@ -26,7 +27,7 @@ class IndListTile extends StatelessWidget {
           leading: Padding(
             padding: const EdgeInsets.only(right: 8.0),
             child: CircleAvatar(
-              backgroundColor: Color(0xffCBE7EA),
+              backgroundColor: Colors.black,
               child: Icon(
                 Icons.event_note,
                 color: Colors.white,
@@ -37,10 +38,10 @@ class IndListTile extends StatelessWidget {
           title: Text(
             name,
             style: TextStyle(
-              fontFamily: 'Montserrat',
-              fontWeight: FontWeight.bold,
-              fontSize: 18.0,
-            ),
+                fontFamily: 'Montserrat',
+                fontWeight: FontWeight.bold,
+                fontSize: 18.0,
+                color: Colors.black),
           ),
           subtitle: Padding(
             padding: const EdgeInsets.only(top: 5.0),
@@ -48,6 +49,7 @@ class IndListTile extends StatelessWidget {
               "Date : $date",
               style: TextStyle(
                 fontFamily: 'Montserrat',
+                color: Colors.black,
                 fontWeight: FontWeight.bold,
                 fontStyle: FontStyle.italic,
               ),

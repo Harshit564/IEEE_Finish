@@ -1,20 +1,27 @@
-import 'dart:io';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import 'package:flutter_icons/flutter_icons.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
+
 import 'package:ieeepecstudentdeadline/Widgets/carousel.dart';
 import 'package:ieeepecstudentdeadline/Widgets/drawer.dart';
 import 'package:ieeepecstudentdeadline/Widgets/icon_card.dart';
 import 'package:ieeepecstudentdeadline/Widgets/image_cards.dart';
 import 'package:ieeepecstudentdeadline/Widgets/moving_text.dart';
+import 'package:ieeepecstudentdeadline/Widgets/theme.dart';
 import 'package:ieeepecstudentdeadline/constants.dart';
 import 'package:ieeepecstudentdeadline/pages/sponsors_page.dart';
 import 'package:ieeepecstudentdeadline/pages/team_members/members_page.dart';
 import 'package:ieeepecstudentdeadline/pages/workshops/main_tab_screen.dart';
-import 'package:rflutter_alert/rflutter_alert.dart';
 import 'events_page.dart';
 import 'news/news_page.dart';
 import 'sessions/sessions_page.dart';
+
+enum SingingCharacter { light, dark, fault }
 
 class HomePage extends StatefulWidget {
   static const String routeName = "/home-page";
@@ -133,7 +140,7 @@ class _HomePageState extends State<HomePage> {
             style: TextStyle(
                 fontFamily: 'Montserrat', color: Colors.white, fontSize: 20),
           ),
-          onPressed: () => exit(0),
+          onPressed: () => SystemNavigator.pop(),
           gradient: LinearGradient(colors: [
             Color.fromRGBO(116, 116, 191, 1.0),
             Color.fromRGBO(52, 138, 199, 1.0)
@@ -143,6 +150,8 @@ class _HomePageState extends State<HomePage> {
     ).show();
   }
 
+  SingingCharacter _character = SingingCharacter.dark;
+
   @override
   void initState() {
     // TODO: implement initState
@@ -150,6 +159,109 @@ class _HomePageState extends State<HomePage> {
     getNotificationText();
     getCarouselImages();
     getUpcomingEventsImages();
+  }
+
+  Future<bool> _onSettingsButtonsPressed(BuildContext context) {
+    ThemeChanger _themeChanger = Provider.of<ThemeChanger>(context);
+    return showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (BuildContext context) {
+          return new AlertDialog(
+            title: Text(
+              'Change the theme',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontFamily: 'Montserrat',
+              ),
+            ),
+            content: Container(
+              height: 200,
+              child: Column(children: [
+                ListTile(
+                  title: Text(
+                    "Dark",
+                    style: TextStyle(
+                      fontFamily: 'Montserrat',
+                      //color: Color(0xff5cb3bc)
+                    ),
+                  ),
+                  leading: Icon(
+                    Feather.moon,
+                    //    color: Colors.black
+                  ),
+                  trailing: Radio(
+                    value: SingingCharacter.dark,
+                    groupValue: _character,
+                    activeColor: Color(0xff5cb3bc),
+                    onChanged: (SingingCharacter value) {
+                      setState(() {
+                        _character = value;
+                        _themeChanger.setTheme(ThemeData.dark());
+                      });
+                    },
+                  ),
+                ),
+                Divider(
+                  thickness: 3.0,
+                ),
+                ListTile(
+                  title: Text(
+                    "Light",
+                    style: TextStyle(
+                      fontFamily: 'Montserrat',
+                      //color: Color(0xff5cb3bc)
+                    ),
+                  ),
+                  leading: Icon(
+                    Feather.sun,
+                    //    color: Colors.black
+                  ),
+                  trailing: Radio(
+                    //hoverColor: Color(0xffCBE7EA),
+                    value: SingingCharacter.light,
+                    groupValue: _character,
+                    activeColor: Color(0xff5cb3bc),
+                    onChanged: (SingingCharacter value) {
+                      setState(() {
+                        _character = value;
+                        _themeChanger.setTheme(
+                            ThemeData(primaryColor: Color(0xffCBE7EA)));
+                      });
+                    },
+                  ),
+                ),
+                Divider(
+                  thickness: 3.0,
+                ),
+                ListTile(
+                  title: Text(
+                    "Custom",
+                    style: TextStyle(
+                        //    color: Color(0xff5cb3bc),
+                        fontFamily: 'Montserrat'),
+                  ),
+                  leading: Icon(
+                    Feather.activity,
+                    //color: Colors.black
+                  ),
+                  trailing: Radio(
+                    value: SingingCharacter.fault,
+                    groupValue: _character,
+                    activeColor: Color(0xff5cb3bc),
+                    onChanged: (SingingCharacter value) {
+                      setState(() {
+                        _character = value;
+                        _themeChanger.setTheme(
+                            ThemeData(primaryColor: Color(0xff5cb3bc)));
+                      });
+                    },
+                  ),
+                ),
+              ]),
+            ),
+          );
+        });
   }
 
   @override
@@ -166,135 +278,148 @@ class _HomePageState extends State<HomePage> {
                 fontSize: 20.0),
           ),
           centerTitle: true,
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(Feather.settings),
+              onPressed: () => _onSettingsButtonsPressed(context),
+              tooltip: "Log Out",
+            ),
+          ],
         ),
         drawer: HomePageDrawer(),
-        body: ListView(
-          children: <Widget>[
-            HomePageCarousel(
-              imageUrl_1: imageCarouselUrl_1,
-              imageUrl_2: imageCarouselUrl_2,
-              imageUrl_3: imageCarouselUrl_3,
-              imageUrl_4: imageCarouselUrl_4,
-              imageUrl_5: imageCarouselUrl_5,
-            ),
-            SizedBox(
-              height: 50.0,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: <Widget>[
-                IconCard(
-                  iconData: Icons.event_note,
-                  text: 'Events',
-                  function: () =>
-                      Navigator.pushNamed(context, EventsPage.routeName),
-                ),
-                IconCard(
-                  iconData: Icons.chrome_reader_mode,
-                  text: 'Workshops',
-                  function: () =>
-                      Navigator.pushNamed(context, TabScreen.routeName),
-                ),
-                IconCard(
-                  iconData: Icons.apps,
-                  text: 'Sessions',
-                  function: () =>
-                      Navigator.pushNamed(context, SessionsPage.routeName),
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 30.0,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: <Widget>[
-                IconCard(
-                  iconData: Icons.group,
-                  text: 'Sponsors',
-                  function: () =>
-                      Navigator.pushNamed(context, SponsorsPage.routeName),
-                ),
-                IconCard(
-                  iconData: Icons.chat,
-                  text: 'News',
-                  function: () =>
-                      Navigator.pushNamed(context, NewsPage.routeName),
-                ),
-                IconCard(
-                  iconData: Icons.group_work,
-                  text: 'Team',
-                  function: () =>
-                      Navigator.pushNamed(context, TeamMembersPage.routeName),
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 50.0,
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8.0),
-              child: Container(
-                color: Color(0xffCBE7EA),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    'Upcoming Events',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
+        body: Container(
+          //color: Color(0xffCBE7EA),
+          child: ListView(
+            children: <Widget>[
+              HomePageCarousel(
+                imageUrl_1: imageCarouselUrl_1,
+                imageUrl_2: imageCarouselUrl_2,
+                imageUrl_3: imageCarouselUrl_3,
+                imageUrl_4: imageCarouselUrl_4,
+                imageUrl_5: imageCarouselUrl_5,
+              ),
+              SizedBox(
+                height: 50.0,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: <Widget>[
+                  IconCard(
+                    iconData: Icons.event_note,
+                    text: 'Events',
+                    function: () =>
+                        Navigator.pushNamed(context, EventsPage.routeName),
+                  ),
+                  IconCard(
+                    iconData: Icons.chrome_reader_mode,
+                    text: 'Workshops',
+                    function: () =>
+                        Navigator.pushNamed(context, TabScreen.routeName),
+                  ),
+                  IconCard(
+                    iconData: Icons.apps,
+                    text: 'Sessions',
+                    function: () =>
+                        Navigator.pushNamed(context, SessionsPage.routeName),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 30.0,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: <Widget>[
+                  IconCard(
+                    iconData: Icons.group,
+                    text: 'Sponsors',
+                    function: () =>
+                        Navigator.pushNamed(context, SponsorsPage.routeName),
+                  ),
+                  IconCard(
+                    iconData: Icons.chat,
+                    text: 'News',
+                    function: () =>
+                        Navigator.pushNamed(context, NewsPage.routeName),
+                  ),
+                  IconCard(
+                    iconData: Icons.group_work,
+                    text: 'Team',
+                    function: () =>
+                        Navigator.pushNamed(context, TeamMembersPage.routeName),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 50.0,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: Container(
+                  color: Color(0xffCBE7EA),
+                  child: Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Text(
+                      'Upcoming Events',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
                         fontFamily: 'Montserrat',
                         fontSize: 20.0,
+                        color: Colors.black,
                         fontWeight: FontWeight.w500,
-                        color: Color(0xff5cb3bc)),
+                        //color: Color(0xff5cb3bc)
+                      ),
+                    ),
                   ),
                 ),
               ),
-            ),
-            Container(
-              height: 250.0,
-              child: SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  children: <Widget>[
-                    ImageCards(
-                      imageUrl: upcomingEventPicUrl_1,
-                    ),
-                    ImageCards(
-                      imageUrl: upcomingEventPicUrl_2,
-                    ),
-                    ImageCards(
-                      imageUrl: upcomingEventPicUrl_3,
-                    ),
-                    ImageCards(
-                      imageUrl: upcomingEventPicUrl_4,
-                    ),
-                    ImageCards(
-                      imageUrl: upcomingEventPicUrl_5,
-                    ),
-                  ],
+              Container(
+                height: 250.0,
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: <Widget>[
+                      ImageCards(
+                        imageUrl: upcomingEventPicUrl_1,
+                      ),
+                      ImageCards(
+                        imageUrl: upcomingEventPicUrl_2,
+                      ),
+                      ImageCards(
+                        imageUrl: upcomingEventPicUrl_3,
+                      ),
+                      ImageCards(
+                        imageUrl: upcomingEventPicUrl_4,
+                      ),
+                      ImageCards(
+                        imageUrl: upcomingEventPicUrl_5,
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            Divider(
-              height: 10,
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Container(
-                  height: 25.0,
-                  child: ScrollingText(
-                    text: notificationText,
-                    textStyle: TextStyle(
-                      fontFamily: 'Montserrat',
-                      fontSize: 14,
-                      color: Color(0xff5cb3bc),
-                    ),
-                  )),
-            )
-          ],
+              SizedBox(
+                height: 20,
+              ),
+              Divider(
+                height: 10,
+                thickness: 5,
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                    height: 25.0,
+                    child: ScrollingText(
+                      text: notificationText,
+                      textStyle: TextStyle(
+                        fontFamily: 'Montserrat',
+                        fontSize: 14,
+                        color: Color(0xff5cb3bc),
+                      ),
+                    )),
+              )
+            ],
+          ),
         ),
       ),
     );

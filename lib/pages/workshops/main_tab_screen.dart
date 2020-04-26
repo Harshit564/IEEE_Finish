@@ -1,7 +1,8 @@
+import 'package:flutter/material.dart';
+
 import 'package:ieeepecstudentdeadline/pages/workshops/cs_workshops.dart';
 import 'package:ieeepecstudentdeadline/pages/workshops/pes_workshops.dart';
 import 'package:ieeepecstudentdeadline/pages/workshops/wie_workshops.dart';
-import 'package:flutter/material.dart';
 
 class TabScreen extends StatefulWidget {
   static const String routeName = "/tab-screen";
@@ -17,7 +18,10 @@ class _TabScreenState extends State<TabScreen> {
       appBar: new AppBar(
         title: new Text(
           'Workshops',
-          style: TextStyle(fontFamily: 'Montserrat'),
+          style: TextStyle(
+              fontFamily: 'Montserrat',
+              fontSize: 20.0,
+              fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
       ),
@@ -53,6 +57,9 @@ class _TabScreenState extends State<TabScreen> {
                   ],
                 ),
               ),
+            ),
+            SizedBox(
+              height: 20,
             ),
             new Expanded(
               child: new TabBarView(

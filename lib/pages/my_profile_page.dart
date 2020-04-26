@@ -1,12 +1,12 @@
-import 'dart:io';
+import 'package:flutter/material.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:ieeepecstudentdeadline/constants.dart';
-import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'package:rflutter_alert/rflutter_alert.dart';
+
+import 'package:ieeepecstudentdeadline/constants.dart';
 import 'login_page.dart';
 
 class MyProfilePage extends StatefulWidget {
@@ -102,7 +102,7 @@ class _MyProfilePageState extends State<MyProfilePage> {
                   fontFamily: 'Montserrat',
                   fontSize: 18.0,
                   fontWeight: FontWeight.w500,
-                  color: Color(0xff5cb3bc)),
+                  color: Colors.black),
             ),
           ),
         ),
@@ -144,7 +144,7 @@ class _MyProfilePageState extends State<MyProfilePage> {
                         fontFamily: 'Montserrat',
                         fontSize: 18.0,
                         fontWeight: FontWeight.w500,
-                        color: Color(0xff5cb3bc)),
+                        color: Colors.black),
                   )
                 : Text(
                     'Non-Proficiency',
@@ -153,7 +153,7 @@ class _MyProfilePageState extends State<MyProfilePage> {
                         fontFamily: 'Montserrat',
                         fontSize: 18.0,
                         fontWeight: FontWeight.w500,
-                        color: Color(0xff5cb3bc)),
+                        color: Colors.black),
                   ),
           ),
         ),

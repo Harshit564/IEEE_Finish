@@ -1,5 +1,6 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+
+import 'package:cached_network_image/cached_network_image.dart';
 
 class IndMemberListTile extends StatelessWidget {
   final String imageUrl;
@@ -20,6 +21,7 @@ class IndMemberListTile extends StatelessWidget {
 
   Widget makeListTile(BuildContext context) {
     return Container(
+      color: Color(0xffCBE7EA),
       child: Row(
         children: <Widget>[
           Expanded(
@@ -73,7 +75,7 @@ class IndMemberListTile extends StatelessWidget {
                           memberName,
                           style: TextStyle(
                             fontFamily: 'Montserrat',
-                            //color: Colors.black,
+                            color: Colors.black,
                             fontWeight: FontWeight.bold,
                             fontSize: 16.67,
                           ),
@@ -102,7 +104,7 @@ class IndMemberListTile extends StatelessWidget {
                               memberPosition,
                               style: TextStyle(
                                 fontFamily: 'Montserrat',
-                                //color: Colors.black,
+                                color: Colors.black,
                               ),
                             ),
                           ),
@@ -126,7 +128,7 @@ class IndMemberListTile extends StatelessWidget {
                               memberContact,
                               style: TextStyle(
                                 fontFamily: 'Montserrat',
-                                //color: Colors.black,
+                                color: Colors.black,
                               ),
                             ),
                           ),
@@ -150,7 +152,7 @@ class IndMemberListTile extends StatelessWidget {
                               memberEmailID,
                               style: TextStyle(
                                 fontFamily: 'Montserrat',
-                                //color: Colors.black,
+                                color: Colors.black,
                               ),
                             ),
                           ),

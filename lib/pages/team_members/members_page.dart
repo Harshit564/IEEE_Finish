@@ -1,5 +1,7 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 import 'package:ieeepecstudentdeadline/Widgets/member_listTile.dart';
 import '../../constants.dart';
 
@@ -29,6 +31,9 @@ class _TeamMembersPageState extends State<TeamMembersPage> {
       body: SafeArea(
         child: ListView(
           children: <Widget>[
+            SizedBox(
+              height: 15,
+            ),
             StreamBuilder(
               stream: _fireStore
                   .collection(fireStoreTeamMembersCollectionLabel)

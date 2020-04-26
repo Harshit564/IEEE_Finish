@@ -1,5 +1,7 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 import 'package:ieeepecstudentdeadline/Widgets/sponsors_gridTile.dart';
 import 'package:ieeepecstudentdeadline/constants.dart';
 
@@ -28,6 +30,7 @@ class _SponsorsPageState extends State<SponsorsPage> {
       ),
       body: ListView(
         children: <Widget>[
+          SizedBox(),
           StreamBuilder(
               stream: _fireStore
                   .collection(fireStoreSponsorCollectionLabel)

@@ -1,10 +1,13 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import 'package:barcode_scan/barcode_scan.dart';
+import 'package:toast/toast.dart';
+
 import 'package:ieeepecstudentdeadline/Widgets/info_column.dart';
 import 'package:ieeepecstudentdeadline/constants.dart';
-import 'package:barcode_scan/barcode_scan.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:toast/toast.dart';
 
 class IndEventPage extends StatefulWidget {
   static const String routeName = "/ind-event-page";
@@ -95,16 +98,18 @@ class _IndEventPageState extends State<IndEventPage> {
         ),
         centerTitle: true,
       ),
-      body: infoListView(
-        context: context,
-        imageUrl: widget.documentSnapshot.data[firestoreImageUrl],
-        name: widget.documentSnapshot.data[firestoreNameLabel],
-        hostName: widget.documentSnapshot.data[firestoreHostNameLabel],
-        time: widget.documentSnapshot.data[firestoreTimeLabel],
-        date: widget.documentSnapshot.data[firestoreDateLabel],
-        location: widget.documentSnapshot.data[firestoreLocationLabel],
-        description: widget.documentSnapshot.data[firestoreDescriptionLabel],
-        attendanceButtonFunction: () => scan(),
+      body: Container(
+        child: infoListView(
+          context: context,
+          imageUrl: widget.documentSnapshot.data[firestoreImageUrl],
+          name: widget.documentSnapshot.data[firestoreNameLabel],
+          hostName: widget.documentSnapshot.data[firestoreHostNameLabel],
+          time: widget.documentSnapshot.data[firestoreTimeLabel],
+          date: widget.documentSnapshot.data[firestoreDateLabel],
+          location: widget.documentSnapshot.data[firestoreLocationLabel],
+          description: widget.documentSnapshot.data[firestoreDescriptionLabel],
+          attendanceButtonFunction: () => scan(),
+        ),
       ),
     );
   }

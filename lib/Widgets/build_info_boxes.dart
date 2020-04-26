@@ -10,7 +10,7 @@ Widget buildInfoBoxes({Icon icon, String value}) {
       decoration: BoxDecoration(
         color: Color(0xffCBE7EA),
         border: Border.all(
-          color: Color(0xffCBE7EA),
+          color: Color(0xffCBE7EC),
         ),
         borderRadius: BorderRadius.circular(35.0),
       ),
@@ -22,7 +22,7 @@ Widget buildInfoBoxes({Icon icon, String value}) {
             value,
             style: TextStyle(
               fontFamily: 'Montserrat',
-              color: Color(0xff5cb3bc),
+              color: Colors.black,
               fontSize: 15.0,
             ),
           ),

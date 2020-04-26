@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:ieeepecstudentdeadline/constants.dart';
 
 class IconCard extends StatelessWidget {
   final Function function;
@@ -38,7 +37,7 @@ class IconCard extends StatelessWidget {
                 style: TextStyle(
                     fontFamily: 'Montserrat',
                     fontSize: 15.0,
-                    color: Color(0xff5cb3bc),
+                    //color: Color(0xff5cb3bc),
                     fontWeight: FontWeight.w500),
               ),
             )
