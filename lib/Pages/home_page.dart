@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter_share/flutter_share.dart';
+import 'package:ieeepecstudentdeadline/Pages/events/events_page.dart';
 import 'package:provider/provider.dart';
 
 import 'package:flutter_icons/flutter_icons.dart';
@@ -17,7 +19,7 @@ import 'package:ieeepecstudentdeadline/constants.dart';
 import 'package:ieeepecstudentdeadline/pages/sponsors_page.dart';
 import 'package:ieeepecstudentdeadline/pages/team_members/members_page.dart';
 import 'package:ieeepecstudentdeadline/pages/workshops/main_tab_screen.dart';
-import 'events_page.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'news/news_page.dart';
 import 'sessions/sessions_page.dart';
 
@@ -30,7 +32,11 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends State<HomePage>
+    with SingleTickerProviderStateMixin {
+
+  String launchUrl = "";
+
   String notificationText = "No new notifications";
 
   String imageCarouselUrl_1 = "";
@@ -113,7 +119,7 @@ class _HomePageState extends State<HomePage> {
   Future<bool> _onWillPop() {
     Alert(
       style: AlertStyle(
-        backgroundColor: Color(0xffCBE7EA),
+        backgroundColor: LightTheme,
         titleStyle: TextStyle(fontFamily: 'Montserrat', color: Colors.black),
         descStyle: TextStyle(fontFamily: 'Montserrat', color: Colors.black),
       ),
@@ -149,8 +155,35 @@ class _HomePageState extends State<HomePage> {
       ],
     ).show();
   }
+  Future<dynamic> _launchUrl(String url) async {
+    setState(() {
+      launchUrl = url;
+    });
+    if (await canLaunch(launchUrl)) {
+      await launch(launchUrl);
+    } else {
+      throw 'Could not launch $launchUrl';
+    }
+  }
+  _launchgmail() async {
+    const url =
+        'mailto:harshitsingh15967@gmail.com?subject=Feedback&body=Feedback for Our Support';
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
 
-  SingingCharacter _character = SingingCharacter.dark;
+  Future<void> sharer() async {
+    await FlutterShare.share(
+        title: 'IEEE Apps share',
+        text: 'Download IEEE PEC Android application',
+        linkUrl:
+        'https://play.google.com/store/apps/developer?id=IEEE+PEC&hl=en',
+        chooserTitle: 'IEEE PEC Chooser Title');
+  }
+  SingingCharacter _character = SingingCharacter.light;
 
   @override
   void initState() {
@@ -176,7 +209,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             content: Container(
-              height: 200,
+              height: 220,
               child: Column(children: [
                 ListTile(
                   title: Text(
@@ -193,7 +226,7 @@ class _HomePageState extends State<HomePage> {
                   trailing: Radio(
                     value: SingingCharacter.dark,
                     groupValue: _character,
-                    activeColor: Color(0xff5cb3bc),
+                    activeColor: CustomTheme,
                     onChanged: (SingingCharacter value) {
                       setState(() {
                         _character = value;
@@ -221,12 +254,12 @@ class _HomePageState extends State<HomePage> {
                     //hoverColor: Color(0xffCBE7EA),
                     value: SingingCharacter.light,
                     groupValue: _character,
-                    activeColor: Color(0xff5cb3bc),
+                    activeColor: CustomTheme,
                     onChanged: (SingingCharacter value) {
                       setState(() {
                         _character = value;
                         _themeChanger.setTheme(
-                            ThemeData(primaryColor: Color(0xffCBE7EA)));
+                            ThemeData(primaryColor: LightTheme));
                       });
                     },
                   ),
@@ -248,18 +281,82 @@ class _HomePageState extends State<HomePage> {
                   trailing: Radio(
                     value: SingingCharacter.fault,
                     groupValue: _character,
-                    activeColor: Color(0xff5cb3bc),
+                    activeColor: CustomTheme,
                     onChanged: (SingingCharacter value) {
                       setState(() {
                         _character = value;
                         _themeChanger.setTheme(
-                            ThemeData(primaryColor: Color(0xff5cb3bc)));
+                            ThemeData(primaryColor: CustomTheme));
                       });
                     },
                   ),
                 ),
+                Divider(
+                  thickness: 3.0,
+                )
               ]),
             ),
+            actions: <Widget>[
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  children: <Widget>[
+                    CircleAvatar(
+                      backgroundColor: LightTheme,
+                      child: IconButton(
+                        icon: Icon(Feather.facebook,
+                        color: Colors.black,),
+                        onPressed: () => _launchUrl(facebookPageURL),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 12,
+                    ),
+                    CircleAvatar(
+                      backgroundColor: LightTheme,
+                      child: IconButton(
+                        icon: Icon(Feather.linkedin,
+                          color: Colors.black,),
+                        onPressed: () => _launchUrl(linkedinPageUrl),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 12,
+                    ),
+                    CircleAvatar(
+                      backgroundColor: LightTheme,
+                      child: IconButton(
+                        icon: Icon(Feather.instagram,
+                          color: Colors.black,),
+                        onPressed: () => _launchUrl(instagramPageURL),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 12,
+                    ),
+                    CircleAvatar(
+                      backgroundColor: LightTheme,
+                      child: IconButton(
+                        icon: Icon(Icons.share,
+                        color: Colors.black,),
+                        onPressed: sharer,
+                      ),
+                    ),
+                    SizedBox(
+                      width: 12,
+                    ),
+                    CircleAvatar(
+                      backgroundColor: LightTheme,
+                      child: IconButton(
+                        icon: Icon(Icons.feedback,
+                        color: Colors.black,),
+                        onPressed: () => _launchgmail(),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ],
           );
         });
   }
@@ -356,7 +453,7 @@ class _HomePageState extends State<HomePage> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8.0),
                 child: Container(
-                  color: Color(0xffCBE7EA),
+                  color: LightTheme,
                   child: Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: Text(
@@ -414,10 +511,10 @@ class _HomePageState extends State<HomePage> {
                       textStyle: TextStyle(
                         fontFamily: 'Montserrat',
                         fontSize: 14,
-                        color: Color(0xff5cb3bc),
+                        color: CustomTheme,
                       ),
                     )),
-              )
+              ),
             ],
           ),
         ),

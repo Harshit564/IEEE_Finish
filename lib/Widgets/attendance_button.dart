@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ieeepecstudentdeadline/constants.dart';
 
 Widget attendanceButton({@required Function function}) {
   return Padding(
@@ -9,7 +10,7 @@ Widget attendanceButton({@required Function function}) {
           borderRadius: new BorderRadius.circular(30.0),
         ),
         onPressed: function,
-        color: Color(0xff5cb3bc),
+        color: CustomTheme,
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Text(

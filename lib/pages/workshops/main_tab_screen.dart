@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ieeepecstudentdeadline/constants.dart';
 
 import 'package:ieeepecstudentdeadline/pages/workshops/cs_workshops.dart';
 import 'package:ieeepecstudentdeadline/pages/workshops/pes_workshops.dart';
@@ -36,9 +37,9 @@ class _TabScreenState extends State<TabScreen> {
                 child: new TabBar(
                   //indicatorColor: Color(0xff5cb3bc),
                   //labelColor: Colors.white,
-                  unselectedLabelColor: Color(0xffCBE7EA),
+                  unselectedLabelColor: LightTheme,
                   indicator: BoxDecoration(
-                    color: Color(0xffCBE7EA),
+                    color: LightTheme,
                   ),
                   tabs: [
                     new Tab(

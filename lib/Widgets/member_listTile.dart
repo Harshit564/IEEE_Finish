@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:ieeepecstudentdeadline/constants.dart';
 
 class IndMemberListTile extends StatelessWidget {
   final String imageUrl;
@@ -21,7 +22,7 @@ class IndMemberListTile extends StatelessWidget {
 
   Widget makeListTile(BuildContext context) {
     return Container(
-      color: Color(0xffCBE7EA),
+      color: LightTheme,
       child: Row(
         children: <Widget>[
           Expanded(
@@ -64,7 +65,7 @@ class IndMemberListTile extends StatelessWidget {
                       padding: const EdgeInsets.all(5.0),
                       child: Icon(
                         Icons.person,
-                        color: Color(0xff5cb3bc),
+                        color: CustomTheme,
                         size: 20.0,
                       ),
                     ),
@@ -93,7 +94,7 @@ class IndMemberListTile extends StatelessWidget {
                           padding: const EdgeInsets.all(5.0),
                           child: Icon(
                             Icons.assignment_ind,
-                            color: Color(0xff5cb3bc),
+                            color: CustomTheme,
                             size: 15.0,
                           ),
                         ),
@@ -117,7 +118,7 @@ class IndMemberListTile extends StatelessWidget {
                           padding: const EdgeInsets.all(5.0),
                           child: Icon(
                             Icons.phone,
-                            color: Color(0xff5cb3bc),
+                            color: CustomTheme,
                             size: 15.0,
                           ),
                         ),
@@ -141,7 +142,7 @@ class IndMemberListTile extends StatelessWidget {
                           padding: const EdgeInsets.all(5.0),
                           child: Icon(
                             Icons.alternate_email,
-                            color: Color(0xff5cb3bc),
+                            color: CustomTheme,
                             size: 15.0,
                           ),
                         ),

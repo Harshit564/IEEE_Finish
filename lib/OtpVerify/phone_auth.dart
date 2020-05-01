@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:ieeepecstudentdeadline/OtpVerify/otp_screen.dart';
+import 'package:ieeepecstudentdeadline/constants.dart';
 
 class PhoneLogin extends StatefulWidget {
   PhoneLogin({Key key}) : super(key: key);
@@ -36,7 +37,7 @@ class _PhoneLoginState extends State<PhoneLogin> {
         shape: new RoundedRectangleBorder(
           borderRadius: new BorderRadius.circular(30.0),
         ),
-        color: Color(0xff5cb3bc),
+        color: CustomTheme,
         onPressed: () => {},
         child: new Container(
           child: new Row(
@@ -116,9 +117,9 @@ class _PhoneLoginState extends State<PhoneLogin> {
                                                 0.85,
                                         child: RaisedButton(
                                           color: !isValid
-                                              ? Color(0xff5cb3bc)
+                                              ? CustomTheme
                                                   .withOpacity(0.5)
-                                              : Color(0xff5cb3bc),
+                                              : CustomTheme,
                                           shape: RoundedRectangleBorder(
                                               borderRadius:
                                                   BorderRadius.circular(20.0)),

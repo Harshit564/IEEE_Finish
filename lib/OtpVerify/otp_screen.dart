@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:ieeepecstudentdeadline/constants.dart';
 
-import 'package:ieeepecstudentdeadline/OtpVerify/home.dart';
+import 'package:ieeepecstudentdeadline/pages/settings_page.dart';
 import './otp_input.dart';
 
 import 'package:fluttertoast/fluttertoast.dart';
@@ -121,7 +122,7 @@ class _OTPScreenState extends State<OTPScreen> {
               padding: EdgeInsets.all(16),
               child: Center(
                 child: RaisedButton(
-                  color: Color(0xff5cb3bc),
+                  color: CustomTheme,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20.0)),
                   child: Text(

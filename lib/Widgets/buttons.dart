@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ieeepecstudentdeadline/constants.dart';
 
 Widget buttons({Function function, Widget widget}) {
   return RaisedButton(
@@ -7,7 +8,7 @@ Widget buttons({Function function, Widget widget}) {
     shape: RoundedRectangleBorder(
       borderRadius: new BorderRadius.circular(30.0),
     ),
-    color: Color(0xff5cb3bc),
+    color: CustomTheme,
     elevation: 6.0,
   );
 }

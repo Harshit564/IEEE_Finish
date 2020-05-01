@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ieeepecstudentdeadline/constants.dart';
 
 Widget buildInfoBoxes({Icon icon, String value}) {
   return Padding(
@@ -8,9 +9,9 @@ Widget buildInfoBoxes({Icon icon, String value}) {
     ),
     child: Container(
       decoration: BoxDecoration(
-        color: Color(0xffCBE7EA),
+        color: LightTheme,
         border: Border.all(
-          color: Color(0xffCBE7EC),
+          color: LightTheme,
         ),
         borderRadius: BorderRadius.circular(35.0),
       ),

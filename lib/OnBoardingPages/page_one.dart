@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:ieeepecstudentdeadline/OtpVerify/app.dart';
 import 'package:ieeepecstudentdeadline/Utils/info.dart';
 import 'package:ieeepecstudentdeadline/Utils/mypainter.dart';
+import 'package:ieeepecstudentdeadline/constants.dart';
 
 class PageOne extends StatelessWidget {
   @override
@@ -13,7 +14,7 @@ class PageOne extends StatelessWidget {
       body: Container(
         child: Stack(
           children: <Widget>[
-            Container(color: Color(0xffCBE7EA)),
+            Container(color: LightTheme),
             Container(
               child: MyPainter(Colors.white),
             ),

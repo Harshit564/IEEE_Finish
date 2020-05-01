@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:connectivity/connectivity.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:ieeepecstudentdeadline/constants.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:ieeepecstudentdeadline/Widgets/buttons.dart';
@@ -110,7 +111,7 @@ class _LoginPageState extends State<LoginPage> {
         context: context,
         builder: (context) {
           return AlertDialog(
-            backgroundColor: Color(0xffCBE7EA),
+            backgroundColor: LightTheme,
             title: Text(
               'Internet Connecion Error',
               textAlign: TextAlign.center,
@@ -126,7 +127,7 @@ class _LoginPageState extends State<LoginPage> {
                 child: Text(
                   'Close',
                   style: TextStyle(
-                      fontFamily: 'Montserrat', color: Color(0xff5cb3bc)),
+                      fontFamily: 'Montserrat', color: CustomTheme),
                 ),
                 onPressed: () {
                   Navigator.pop(context);
@@ -317,7 +318,7 @@ class _LoginPageState extends State<LoginPage> {
                                 isSwitched = value;
                               });
                             },
-                            activeTrackColor: Color(0xffCBE7EA),
+                            activeTrackColor: LightTheme,
                             activeColor: Colors.white,
                           ),
                         ],
@@ -361,7 +362,7 @@ class _LoginPageState extends State<LoginPage> {
                           'Please wait',
                           style: TextStyle(
                             fontFamily: 'Montserrat',
-                            color: Color(0xff5cb3bc),
+                            color: CustomTheme,
                           ),
                         ),
                       )

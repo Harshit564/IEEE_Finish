@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
 
-import 'package:ieeepecstudentdeadline/OtpVerify/home.dart';
+import 'package:ieeepecstudentdeadline/pages/settings_page.dart';
 import 'package:ieeepecstudentdeadline/OtpVerify/login.dart';
 
 class App extends StatefulWidget {

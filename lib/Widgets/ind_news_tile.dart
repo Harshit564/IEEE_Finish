@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:ieeepecstudentdeadline/constants.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class NewsListTile extends StatelessWidget {
@@ -24,7 +25,7 @@ class NewsListTile extends StatelessWidget {
       child: Container(
         width: MediaQuery.of(context).size.width,
         child: Card(
-          color: Color(0xffCBE7EA),
+          color: LightTheme,
           elevation: 8.0,
           child: Column(
             children: <Widget>[

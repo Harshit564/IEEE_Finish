@@ -41,7 +41,7 @@ class _MyProfilePageState extends State<MyProfilePage> {
   _onAlertButtonsPressed(context) {
     Alert(
       style: AlertStyle(
-        backgroundColor: Color(0xffCBE7EA),
+        backgroundColor: LightTheme,
         titleStyle: TextStyle(fontFamily: 'Montserrat', color: Colors.black),
         descStyle: TextStyle(fontFamily: 'Montserrat', color: Colors.black),
       ),
@@ -71,7 +71,8 @@ class _MyProfilePageState extends State<MyProfilePage> {
           onPressed: () {
             handleSignOut().then((val) {
               preferences.clear().then((val) {
-                Navigator.pushNamed(context, LoginPage.routeName);
+                Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context)=>LoginPage()), (e) => false);
+                //Navigator.pushNamed(context, LoginPage.routeName);
               });
             });
           },
@@ -88,7 +89,7 @@ class _MyProfilePageState extends State<MyProfilePage> {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Card(
-        color: Color(0xffCBE7EA),
+        color: LightTheme,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(30.0),
         ),
@@ -129,7 +130,7 @@ class _MyProfilePageState extends State<MyProfilePage> {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Card(
-        color: Color(0xffCBE7EA),
+        color: LightTheme,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(30.0),
         ),

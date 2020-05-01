@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:ieeepecstudentdeadline/Pages/events/events_page.dart';
+import 'package:ieeepecstudentdeadline/constants.dart';
 
 import 'package:provider/provider.dart';
 
@@ -16,7 +18,6 @@ import 'package:ieeepecstudentdeadline/pages/workshops/pes_workshops.dart';
 import 'package:ieeepecstudentdeadline/pages/workshops/wie_workshops.dart';
 
 import 'Widgets/theme.dart';
-import 'pages/events_page.dart';
 import 'pages/home_page.dart';
 import 'pages/login_page.dart';
 import 'pages/splash_screen_page.dart';
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider<ThemeChanger>(
-      builder: (_) => ThemeChanger(ThemeData(primaryColor: Color(0xffCBE7EA))),
+      builder: (_) => ThemeChanger(ThemeData(primaryColor: LightTheme)),
       child: new MaterialAppWithTheme(),
     );
   }

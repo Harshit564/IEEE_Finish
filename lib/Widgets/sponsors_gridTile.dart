@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:ieeepecstudentdeadline/constants.dart';
 
 Widget SponsorsGridTile({
   @required String sponsorName,
@@ -8,7 +9,7 @@ Widget SponsorsGridTile({
   @required BuildContext context,
 }) {
   return Card(
-    color: Color(0xffCBE7EA),
+    color: LightTheme,
     elevation: 10,
     child: GridTile(
       child: Padding(

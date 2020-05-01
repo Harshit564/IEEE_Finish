@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ieeepecstudentdeadline/constants.dart';
 
 class IndListTile extends StatelessWidget {
   final String name;
@@ -17,7 +18,7 @@ class IndListTile extends StatelessWidget {
         bottom: 5.0,
       ),
       child: Card(
-        color: Color(0xffCBE7EA),
+        color: LightTheme,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(45.0),
         ),

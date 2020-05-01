@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ieeepecstudentdeadline/constants.dart';
 
 Widget aboutLine() {
   return Padding(
@@ -11,7 +12,7 @@ Widget aboutLine() {
         textAlign: TextAlign.center,
         style: TextStyle(
           fontFamily: 'Montserrat',
-          color: Color(0xff5cb3bc),
+          color: CustomTheme,
           fontWeight: FontWeight.bold,
           fontSize: 18.0,
         ),

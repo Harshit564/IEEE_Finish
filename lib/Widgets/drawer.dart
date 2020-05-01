@@ -90,7 +90,7 @@ class _HomePageDrawerState extends State<HomePageDrawer> {
         children: <Widget>[
           UserAccountsDrawerHeader(
             currentAccountPicture: CircleAvatar(
-              backgroundColor: Color(0xff5cb3bc),
+              backgroundColor: CustomTheme,
               child: Icon(
                 Icons.person,
                 size: 30.0,

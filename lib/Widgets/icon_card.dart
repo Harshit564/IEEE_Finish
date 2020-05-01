@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ieeepecstudentdeadline/constants.dart';
 
 class IconCard extends StatelessWidget {
   final Function function;
@@ -26,7 +27,7 @@ class IconCard extends StatelessWidget {
                   icon: Icon(
                     iconData,
                     size: 30,
-                    color: Color(0xffCBE7EA),
+                    color: LightTheme,
                   ),
                   onPressed: function,
                 )),

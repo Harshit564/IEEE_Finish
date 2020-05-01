@@ -1,20 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:ieeepecstudentdeadline/constants.dart';
 import 'package:provider/provider.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_share/flutter_share.dart';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 
 import 'package:ieeepecstudentdeadline/Widgets/theme.dart';
 import 'package:ieeepecstudentdeadline/pages/login_page.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 enum SingingCharacter { light, dark, fault }
 
 class HomePageOtp extends StatefulWidget {
   final FirebaseUser user;
+  final Function() onPressed;
+  final String tooltip;
+  final IconData icon;
 
-  HomePageOtp({Key key, @required this.user})
+  HomePageOtp(
+      {Key key, @required this.user, this.onPressed, this.tooltip, this.icon})
       : assert(user != null),
         super(key: key);
 
@@ -22,8 +29,124 @@ class HomePageOtp extends StatefulWidget {
   _HomePageOtpState createState() => _HomePageOtpState();
 }
 
-class _HomePageOtpState extends State<HomePageOtp> {
+class _HomePageOtpState extends State<HomePageOtp>
+    with SingleTickerProviderStateMixin {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+  String launchUrl = "";
+
+  bool isOpened = false;
+  AnimationController _animationController;
+  Animation<double> _animateIcon;
+  Animation<Color> _buttonColor;
+  Animation<double> _translateButton;
+  Curve _curve = Curves.easeOut;
+  double _fabHeight = 56.0;
+
+  @override
+  dispose() {
+    _animationController.dispose();
+    super.dispose();
+  }
+
+  animate() {
+    if (!isOpened) {
+      _animationController.forward();
+    } else {
+      _animationController.reverse();
+    }
+    isOpened = !isOpened;
+  }
+
+  Future<dynamic> _launchUrl(String url) async {
+    setState(() {
+      launchUrl = url;
+    });
+    if (await canLaunch(launchUrl)) {
+      await launch(launchUrl);
+    } else {
+      throw 'Could not launch $launchUrl';
+    }
+  }
+
+  _launchgmail() async {
+    const url =
+        'mailto:harshitsingh15967@gmail.com?subject=Feedback&body=Feedback for Our Support';
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+
+  Future<void> sharer() async {
+    await FlutterShare.share(
+        title: 'IEEE Apps share',
+        text: 'Download IEEE PEC Android application',
+        linkUrl:
+            'https://play.google.com/store/apps/developer?id=IEEE+PEC&hl=en',
+        chooserTitle: 'IEEE PEC Chooser Title');
+  }
+
+  Widget like() {
+    return Container(
+      child: FloatingActionButton(
+        heroTag: 'btn1',
+        backgroundColor: CustomTheme,
+        onPressed: () => _launchUrl(facebookPageURL),
+        tooltip: 'Like',
+        child: Icon(
+          Feather.facebook,
+          color: Colors.black,
+        ),
+      ),
+    );
+  }
+
+  Widget share() {
+    return Container(
+      child: FloatingActionButton(
+        heroTag: 'btn2',
+        backgroundColor: CustomTheme,
+        onPressed: sharer,
+        tooltip: 'Share',
+        child: Icon(
+          Icons.share,
+          color: Colors.black,
+        ),
+      ),
+    );
+  }
+
+  Widget feedback() {
+    return Container(
+      child: FloatingActionButton(
+        heroTag: 'btn3',
+        backgroundColor: CustomTheme,
+        onPressed: () => _launchgmail(),
+        tooltip: 'Feedback',
+        child: Icon(
+          Icons.feedback,
+          color: Colors.black,
+        ),
+      ),
+    );
+  }
+
+  Widget toggle() {
+    return Container(
+      child: FloatingActionButton(
+        heroTag: 'btn4',
+        backgroundColor: CustomTheme,
+        onPressed: animate,
+        tooltip: 'Toggle',
+        child: AnimatedIcon(
+          icon: AnimatedIcons.menu_close,
+          color: Colors.black,
+          progress: _animateIcon,
+        ),
+      ),
+    );
+  }
 
 /*
   _onAlertButtonsPressed(context) {
@@ -70,7 +193,43 @@ class _HomePageOtpState extends State<HomePageOtp> {
     ).show();
   }
 */
-  SingingCharacter _character = SingingCharacter.dark;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _animationController =
+        AnimationController(vsync: this, duration: Duration(milliseconds: 500))
+          ..addListener(() {
+            setState(() {});
+          });
+    _animateIcon =
+        Tween<double>(begin: 0.0, end: 1.0).animate(_animationController);
+    _buttonColor = ColorTween(
+      begin: Colors.blue,
+      end: Colors.red,
+    ).animate(CurvedAnimation(
+      parent: _animationController,
+      curve: Interval(
+        0.00,
+        1.00,
+        curve: Curves.linear,
+      ),
+    ));
+    _translateButton = Tween<double>(
+      begin: _fabHeight,
+      end: -14.0,
+    ).animate(CurvedAnimation(
+      parent: _animationController,
+      curve: Interval(
+        0.0,
+        0.75,
+        curve: _curve,
+      ),
+    ));
+    super.initState();
+  }
+
+  SingingCharacter _character = SingingCharacter.light;
 
   @override
   Widget build(BuildContext context) {
@@ -94,7 +253,7 @@ class _HomePageOtpState extends State<HomePageOtp> {
     ],*/
       ),
       body: Container(
-        color: Color(0xffCBE7EA),
+        color: LightTheme,
         child: SingleChildScrollView(
           child: Column(
             children: <Widget>[
@@ -109,10 +268,11 @@ class _HomePageOtpState extends State<HomePageOtp> {
               SizedBox(
                 height: 30,
               ),
-              Padding(
+              /*            Padding(
                 padding: const EdgeInsets.only(left: 8.0, right: 8.0),
-                child: Card(
-                  elevation: 10,
+                child: Material(
+                  elevation: 14,
+                  borderRadius: BorderRadius.circular(24.0),
                   //color: Color(0xffCBE7EA),
                   child: Padding(
                     padding: const EdgeInsets.all(16.0),
@@ -196,13 +356,16 @@ class _HomePageOtpState extends State<HomePageOtp> {
                   ),
                 ),
               ),
+    */
               SizedBox(
                 height: 30,
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 8.0, right: 8.0),
-                child: Card(
-                  elevation: 10,
+                child: Material(
+                  elevation: 14,
+                  borderRadius: BorderRadius.circular(30.0),
+                  shadowColor: Colors.black,
                   //color: Color(0xffCBE7EA),
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
@@ -237,7 +400,7 @@ class _HomePageOtpState extends State<HomePageOtp> {
                           trailing: Radio(
                             value: SingingCharacter.dark,
                             groupValue: _character,
-                            activeColor: Color(0xff5cb3bc),
+                            activeColor: CustomTheme,
                             onChanged: (SingingCharacter value) {
                               setState(() {
                                 _character = value;
@@ -265,12 +428,12 @@ class _HomePageOtpState extends State<HomePageOtp> {
                             //hoverColor: Color(0xffCBE7EA),
                             value: SingingCharacter.light,
                             groupValue: _character,
-                            activeColor: Color(0xff5cb3bc),
+                            activeColor: CustomTheme,
                             onChanged: (SingingCharacter value) {
                               setState(() {
                                 _character = value;
                                 _themeChanger.setTheme(
-                                    ThemeData(primaryColor: Color(0xffCBE7EA)));
+                                    ThemeData(primaryColor: LightTheme));
                               });
                             },
                           ),
@@ -292,12 +455,12 @@ class _HomePageOtpState extends State<HomePageOtp> {
                           trailing: Radio(
                             value: SingingCharacter.fault,
                             groupValue: _character,
-                            activeColor: Color(0xff5cb3bc),
+                            activeColor: CustomTheme,
                             onChanged: (SingingCharacter value) {
                               setState(() {
                                 _character = value;
                                 _themeChanger.setTheme(
-                                    ThemeData(primaryColor: Color(0xff5cb3bc)));
+                                    ThemeData(primaryColor: CustomTheme));
                               });
                             },
                           ),
@@ -314,7 +477,7 @@ class _HomePageOtpState extends State<HomePageOtp> {
                 height: 50,
               ),
               RaisedButton(
-                color: Color(0xff5cb3bc),
+                color: CustomTheme,
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20)),
                 child: Text(
@@ -325,7 +488,6 @@ class _HomePageOtpState extends State<HomePageOtp> {
                       fontSize: 16.0),
                 ),
                 onPressed: () {
-                  _firebaseAuth.signOut();
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => LoginPage()));
                 },
@@ -336,6 +498,36 @@ class _HomePageOtpState extends State<HomePageOtp> {
             ],
           ),
         ),
+      ),
+      floatingActionButton: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: <Widget>[
+          Transform(
+            transform: Matrix4.translationValues(
+              0.0,
+              _translateButton.value * 3.0,
+              0.0,
+            ),
+            child: like(),
+          ),
+          Transform(
+            transform: Matrix4.translationValues(
+              0.0,
+              _translateButton.value * 2.0,
+              0.0,
+            ),
+            child: share(),
+          ),
+          Transform(
+            transform: Matrix4.translationValues(
+              0.0,
+              _translateButton.value,
+              0.0,
+            ),
+            child: feedback(),
+          ),
+          toggle(),
+        ],
       ),
     );
   }

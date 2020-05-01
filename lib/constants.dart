@@ -1,3 +1,9 @@
+
+import 'package:flutter/cupertino.dart';
+
+const Color LightTheme = Color(0xffCBE7EA);
+const Color CustomTheme = Color(0xff5cb3bc);
+
 const String appbarLabelHomePage = "IEEE Student Branch";
 const String facebookPageURL = "https://www.facebook.com/IEEEPEC/";
 const String instagramPageURL = "https://www.instagram.com/ieeepec/";
