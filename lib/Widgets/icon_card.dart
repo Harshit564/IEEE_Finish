@@ -27,7 +27,7 @@ class IconCard extends StatelessWidget {
                   icon: Icon(
                     iconData,
                     size: 30,
-                    color: Color(0xffCBE7EA),
+                    color: LightTheme,
                   ),
                   onPressed: function,
                 )),
@@ -38,7 +38,7 @@ class IconCard extends StatelessWidget {
                 style: TextStyle(
                     fontFamily: 'Montserrat',
                     fontSize: 15.0,
-                    color: Colors.black,
+                    //color: Color(0xff5cb3bc),
                     fontWeight: FontWeight.w500),
               ),
             )

@@ -1,7 +1,8 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:ieeepecstudentdeadline/Widgets/member_listTile.dart';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+import 'package:ieeepecstudentdeadline/Widgets/member_listTile.dart';
 import '../../constants.dart';
 
 class AppCoordinatorsPage extends StatefulWidget {
@@ -23,7 +24,7 @@ class _AppCoordinatorsPageState extends State<AppCoordinatorsPage> {
           style: TextStyle(
               fontFamily: 'Montserrat',
               fontWeight: FontWeight.bold,
-              fontSize: 22.0),
+              fontSize: 20.0),
         ),
         centerTitle: true,
       ),

@@ -1,15 +1,21 @@
-import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:ieeepecstudentdeadline/constants.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class NewsListTile extends StatelessWidget {
   final String newsTitle;
   final String newsDescription;
   final String imageUrl;
+  final String webUrl;
 
   NewsListTile({
     @required this.imageUrl,
     @required this.newsTitle,
     @required this.newsDescription,
+    @required this.webUrl,
   });
 
   @override
@@ -19,6 +25,7 @@ class NewsListTile extends StatelessWidget {
       child: Container(
         width: MediaQuery.of(context).size.width,
         child: Card(
+          color: LightTheme,
           elevation: 8.0,
           child: Column(
             children: <Widget>[
@@ -57,10 +64,10 @@ class NewsListTile extends StatelessWidget {
                         newsTitle,
                         textAlign: TextAlign.justify,
                         style: TextStyle(
-                          fontFamily: 'Montserrat',
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18.0,
-                        ),
+                            fontFamily: 'Montserrat',
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18.0,
+                            color: Colors.black),
                         //textAlign: TextAlign.justify,
                       ),
                     ),
@@ -69,7 +76,10 @@ class NewsListTile extends StatelessWidget {
               ),
               Padding(
                 padding: const EdgeInsets.all(1.0),
-                child: Divider(),
+                child: Divider(
+                  thickness: 1.0,
+                  color: Colors.black,
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.only(
@@ -81,9 +91,73 @@ class NewsListTile extends StatelessWidget {
                   alignment: Alignment.centerLeft,
                   child: Text(
                     newsDescription,
-                    style: TextStyle(fontFamily: 'Montserrat'),
+                    style: TextStyle(
+                        fontFamily: 'Montserrat', color: Colors.black),
                     textAlign: TextAlign.justify,
                   ),
+                ),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              /*            Padding(
+                padding: const EdgeInsets.only(
+                  left: 8.0,
+                  bottom: 8.0,
+                  right: 8.0,
+                ),
+                child: Row(
+                  children: <Widget>[
+                    Text('Visit Website: ',
+                      style: TextStyle(
+                        fontFamily: 'Montserrat',
+                        fontWeight: FontWeight.bold,
+                        //color: Color(0xff607D8B),
+                      ),),
+                    Link(
+                      child: Text('Tap to visit the Website',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontFamily: 'Montserrat',
+                            color: Colors.blue,
+                            decoration: TextDecoration.underline
+                        ),
+                      ),
+                      url: webUrl,
+                    )
+                  ],
+                ),
+              ),
+*/
+
+              Padding(
+                padding: const EdgeInsets.only(
+                  left: 8.0,
+                  bottom: 8.0,
+                  right: 8.0,
+                ),
+                child: Row(
+                  children: <Widget>[
+                    Text(
+                      'Visit Website: ',
+                      style: TextStyle(
+                          fontFamily: 'Montserrat',
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black
+                          //color: Color(0xff607D8B),
+                          ),
+                    ),
+                    InkWell(
+                        child: new Text(
+                          'Tap to visit the Website',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontFamily: 'Montserrat',
+                              color: Colors.blue,
+                              decoration: TextDecoration.underline),
+                        ),
+                        onTap: () => launch(webUrl)),
+                  ],
                 ),
               ),
             ],

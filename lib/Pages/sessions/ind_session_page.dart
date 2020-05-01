@@ -1,9 +1,12 @@
-import 'package:barcode_scan/barcode_scan.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:ieeepecstudentdeadline/Widgets/info_column.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+
+import 'package:barcode_scan/barcode_scan.dart';
 import 'package:toast/toast.dart';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import 'package:ieeepecstudentdeadline/Widgets/info_column.dart';
 import '../../constants.dart';
 
 class IndSessionPage extends StatefulWidget {

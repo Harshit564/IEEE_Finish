@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+
 import 'info.dart';
 
 class MyPainter extends StatelessWidget {
   Color color;
+
   MyPainter(this.color);
 
   @override
@@ -16,9 +18,9 @@ class MyPainter extends StatelessWidget {
   }
 }
 
-class HomePainter extends CustomPainter{
-
+class HomePainter extends CustomPainter {
   Color _color;
+
   HomePainter(this._color);
 
   @override
@@ -26,10 +28,12 @@ class HomePainter extends CustomPainter{
     Path path = Path();
     Paint paint = Paint();
 
-    path =Path();
+    path = Path();
     path.moveTo(size.width, size.height);
-    path.quadraticBezierTo(size.width * 0.65, size.height * 0.9, size.width * 0.924, size.height * 0.78);
-    path.quadraticBezierTo(size. width * 0.98, size.height * 0.75, size.width, size.height * 0.64);
+    path.quadraticBezierTo(size.width * 0.65, size.height * 0.9,
+        size.width * 0.924, size.height * 0.78);
+    path.quadraticBezierTo(
+        size.width * 0.98, size.height * 0.75, size.width, size.height * 0.64);
     path.close();
 
     paint.color = _color;
@@ -40,5 +44,4 @@ class HomePainter extends CustomPainter{
   bool shouldRepaint(CustomPainter oldDelegate) {
     return oldDelegate != this;
   }
-
 }

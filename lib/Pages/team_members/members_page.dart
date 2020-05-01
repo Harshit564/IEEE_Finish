@@ -1,5 +1,7 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 import 'package:ieeepecstudentdeadline/Widgets/member_listTile.dart';
 import '../../constants.dart';
 
@@ -22,13 +24,16 @@ class _TeamMembersPageState extends State<TeamMembersPage> {
           style: TextStyle(
               fontFamily: 'Montserrat',
               fontWeight: FontWeight.bold,
-              fontSize: 22.0),
+              fontSize: 20.0),
         ),
         centerTitle: true,
       ),
       body: SafeArea(
         child: ListView(
           children: <Widget>[
+            SizedBox(
+              height: 15,
+            ),
             StreamBuilder(
               stream: _fireStore
                   .collection(fireStoreTeamMembersCollectionLabel)
@@ -47,6 +52,7 @@ class _TeamMembersPageState extends State<TeamMembersPage> {
                     final memberPosition =
                         member.data[firestoreTeamMemberPositionLabel];
                     final memberImageUrl = member.data[firestoreImageUrl];
+                    final priority = member.data['priority'];
 
                     final memberListTile = IndMemberListTile(
                       imageUrl: memberImageUrl,
@@ -54,10 +60,15 @@ class _TeamMembersPageState extends State<TeamMembersPage> {
                       memberContact: memberContact,
                       memberEmailID: memberEmailID,
                       memberPosition: memberPosition,
+                      priority: priority,
                     );
 
                     memberListTiles.add(memberListTile);
+                    memberListTiles.sort((m1, m2) {
+                      return m1.priority.compareTo(m2.priority);
+                    });
                   }
+
                   return Column(
                     children: memberListTiles,
                   );

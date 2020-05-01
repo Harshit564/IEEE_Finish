@@ -1,5 +1,7 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 import 'package:ieeepecstudentdeadline/Widgets/ind_listTile.dart';
 import 'package:ieeepecstudentdeadline/constants.dart';
 import 'package:ieeepecstudentdeadline/pages/sessions/ind_session_page.dart';
@@ -22,7 +24,7 @@ class _SessionsPageState extends State<SessionsPage> {
           'Sessions',
           style: TextStyle(
             fontWeight: FontWeight.bold,
-            fontSize: 22.0,
+            fontSize: 20.0,
             fontFamily: 'Montserrat',
           ),
         ),
@@ -31,6 +33,9 @@ class _SessionsPageState extends State<SessionsPage> {
       body: SafeArea(
         child: ListView(
           children: <Widget>[
+            SizedBox(
+              height: 20.0,
+            ),
             StreamBuilder(
               stream: _fireStore
                   .collection(fireStoreSessionsCollectionLabel)

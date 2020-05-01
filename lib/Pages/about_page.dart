@@ -1,5 +1,7 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 import 'package:ieeepecstudentdeadline/Widgets/about_text.dart';
 import '../constants.dart';
 
@@ -25,7 +27,7 @@ class _AboutPageState extends State<AboutPage> {
           style: TextStyle(
               fontFamily: 'Montserrat',
               fontWeight: FontWeight.bold,
-              fontSize: 22.0),
+              fontSize: 20.0),
         ),
       ),
       body: ListView(

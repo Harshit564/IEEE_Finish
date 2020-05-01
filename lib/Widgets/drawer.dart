@@ -1,15 +1,14 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_icons/flutter_icons.dart';
-import 'package:ieeepecstudentdeadline/Widgets/theme.dart';
+
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:url_launcher/url_launcher.dart';
+
 import 'package:ieeepecstudentdeadline/constants.dart';
 import 'package:ieeepecstudentdeadline/pages/about_page.dart';
 import 'package:ieeepecstudentdeadline/pages/app_coordinators/app_coordinators_page.dart';
 import 'package:ieeepecstudentdeadline/pages/my_profile_page.dart';
 import 'package:ieeepecstudentdeadline/pages/sponsors_page.dart';
-import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class HomePageDrawer extends StatefulWidget {
   @override
@@ -22,7 +21,7 @@ class _HomePageDrawerState extends State<HomePageDrawer> {
   String studentName = "";
   String emailId = "";
   final FirebaseAuth _auth = FirebaseAuth.instance;
-  bool state = false;
+  static bool state = false;
 
   Future<void> _getInfo() async {
     sharedPreferences = await SharedPreferences.getInstance();
@@ -86,13 +85,12 @@ class _HomePageDrawerState extends State<HomePageDrawer> {
 
   @override
   Widget build(BuildContext context) {
-    ThemeChanger _themeChanger = Provider.of<ThemeChanger>(context);
     return Drawer(
       child: Column(
         children: <Widget>[
           UserAccountsDrawerHeader(
             currentAccountPicture: CircleAvatar(
-              backgroundColor: Color(0xff5cb3bc),
+              backgroundColor: CustomTheme,
               child: Icon(
                 Icons.person,
                 size: 30.0,
@@ -134,27 +132,6 @@ class _HomePageDrawerState extends State<HomePageDrawer> {
             icon: Icons.info_outline,
             function: () => Navigator.pushNamed(context, AboutPage.routeName),
           ),
-          Divider(),
-          ListTile(
-              leading: Icon(Feather.moon),
-              title: Text(
-                "Dark Theme",
-                style: TextStyle(fontFamily: 'Montserrat'),
-              ),
-              trailing: Switch(
-                value: state,
-                onChanged: (bool s) {
-                  setState(() {
-                    state = s;
-                    //print(state);
-                    if (state == false) {
-                      _themeChanger
-                          .setTheme(ThemeData(primaryColor: Color(0xffCBE7EA)));
-                    } else
-                      _themeChanger.setTheme(ThemeData.dark());
-                  });
-                },
-              )),
           SizedBox(
             height: 80.0,
           ),
@@ -186,8 +163,8 @@ class _HomePageDrawerState extends State<HomePageDrawer> {
                       imagePath: instagramLogoPath,
                     ),
                     _buildURLLogos(
-                      imagePath: twitterLogoPath,
-                      pageURL: twitterPageUrl,
+                      imagePath: linkedinLogoPath,
+                      pageURL: linkedinPageUrl,
                     ),
                   ],
                 ),

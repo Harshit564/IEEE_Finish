@@ -1,5 +1,7 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 import 'package:ieeepecstudentdeadline/Widgets/sponsors_gridTile.dart';
 import 'package:ieeepecstudentdeadline/constants.dart';
 
@@ -22,12 +24,13 @@ class _SponsorsPageState extends State<SponsorsPage> {
           style: TextStyle(
               fontFamily: 'Montserrat',
               fontWeight: FontWeight.bold,
-              fontSize: 22.0),
+              fontSize: 20.0),
         ),
         centerTitle: true,
       ),
       body: ListView(
         children: <Widget>[
+          SizedBox(),
           StreamBuilder(
               stream: _fireStore
                   .collection(fireStoreSponsorCollectionLabel)

@@ -1,5 +1,7 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 import 'package:ieeepecstudentdeadline/Widgets/ind_listTile.dart';
 import 'package:ieeepecstudentdeadline/constants.dart';
 import 'ind_event_page.dart';
@@ -23,13 +25,16 @@ class _EventsPageState extends State<EventsPage> {
           style: TextStyle(
               fontFamily: 'Montserrat',
               fontWeight: FontWeight.bold,
-              fontSize: 22.0),
+              fontSize: 20.0),
         ),
         centerTitle: true,
       ),
       body: SafeArea(
         child: ListView(
           children: <Widget>[
+            SizedBox(
+              height: 20,
+            ),
             StreamBuilder(
               stream: _fireStore
                   .collection(fireStoreEventCollectionLabel)

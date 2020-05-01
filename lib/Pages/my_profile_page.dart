@@ -1,12 +1,12 @@
-import 'dart:io';
+import 'package:flutter/material.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:ieeepecstudentdeadline/constants.dart';
-import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'package:rflutter_alert/rflutter_alert.dart';
+
+import 'package:ieeepecstudentdeadline/constants.dart';
 import 'login_page.dart';
 
 class MyProfilePage extends StatefulWidget {
@@ -41,7 +41,7 @@ class _MyProfilePageState extends State<MyProfilePage> {
   _onAlertButtonsPressed(context) {
     Alert(
       style: AlertStyle(
-        backgroundColor: Color(0xffCBE7EA),
+        backgroundColor: LightTheme,
         titleStyle: TextStyle(fontFamily: 'Montserrat', color: Colors.black),
         descStyle: TextStyle(fontFamily: 'Montserrat', color: Colors.black),
       ),
@@ -71,7 +71,8 @@ class _MyProfilePageState extends State<MyProfilePage> {
           onPressed: () {
             handleSignOut().then((val) {
               preferences.clear().then((val) {
-                exit(0);
+                Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context)=>LoginPage()), (e) => false);
+                //Navigator.pushNamed(context, LoginPage.routeName);
               });
             });
           },
@@ -88,7 +89,7 @@ class _MyProfilePageState extends State<MyProfilePage> {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Card(
-        color: Color(0xffCBE7EA),
+        color: LightTheme,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(30.0),
         ),
@@ -99,10 +100,10 @@ class _MyProfilePageState extends State<MyProfilePage> {
               text,
               textAlign: TextAlign.center,
               style: TextStyle(
-                fontFamily: 'Montserrat',
-                fontSize: 18.0,
-                fontWeight: FontWeight.w500,
-              ),
+                  fontFamily: 'Montserrat',
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.w500,
+                  color: Colors.black),
             ),
           ),
         ),
@@ -129,7 +130,7 @@ class _MyProfilePageState extends State<MyProfilePage> {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Card(
-        color: Color(0xffCBE7EA),
+        color: LightTheme,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(30.0),
         ),
@@ -141,19 +142,19 @@ class _MyProfilePageState extends State<MyProfilePage> {
                     'Proficiency',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      fontFamily: 'Montserrat',
-                      fontSize: 18.0,
-                      fontWeight: FontWeight.w500,
-                    ),
+                        fontFamily: 'Montserrat',
+                        fontSize: 18.0,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.black),
                   )
                 : Text(
                     'Non-Proficiency',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      fontFamily: 'Montserrat',
-                      fontSize: 18.0,
-                      fontWeight: FontWeight.w500,
-                    ),
+                        fontFamily: 'Montserrat',
+                        fontSize: 18.0,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.black),
                   ),
           ),
         ),
@@ -188,7 +189,7 @@ class _MyProfilePageState extends State<MyProfilePage> {
           style: TextStyle(
               fontFamily: 'Montserrat',
               fontWeight: FontWeight.bold,
-              fontSize: 22.0),
+              fontSize: 20.0),
         ),
         centerTitle: true,
         actions: <Widget>[

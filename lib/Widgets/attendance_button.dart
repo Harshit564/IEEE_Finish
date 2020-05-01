@@ -10,16 +10,14 @@ Widget attendanceButton({@required Function function}) {
           borderRadius: new BorderRadius.circular(30.0),
         ),
         onPressed: function,
-        color: Color(0xffCBE7EA),
+        color: CustomTheme,
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Text(
             'Attendance',
             textAlign: TextAlign.center,
             style: TextStyle(
-              fontFamily: 'Montserrat',
-              fontSize: 18.0,
-            ),
+                fontFamily: 'Montserrat', fontSize: 16.0, color: Colors.black),
           ),
         ),
       ),

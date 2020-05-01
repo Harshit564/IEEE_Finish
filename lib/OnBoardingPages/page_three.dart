@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+
+import 'package:ieeepecstudentdeadline/OtpVerify/app.dart';
 import 'package:ieeepecstudentdeadline/Utils/info.dart';
 import 'package:ieeepecstudentdeadline/Utils/mypainter.dart';
-import 'package:ieeepecstudentdeadline/constants.dart';
-import 'package:ieeepecstudentdeadline/pages/login_page.dart';
 
 class PageThree extends StatelessWidget {
   @override
@@ -71,7 +71,8 @@ class PageThree extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.only(
                       left: SizeConfig.blockSizeHorizontal * 14),
-                  child: Image.asset('assets/images/ieee_wie.png',
+                  child: Image.asset(
+                    'assets/images/ieee_wie.png',
                     fit: BoxFit.contain,
                     width: 75,
                     height: 75,
@@ -112,7 +113,7 @@ class PageThree extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => LoginPage()),
+                      MaterialPageRoute(builder: (context) => App()),
                     );
                   },
                   child: Text(

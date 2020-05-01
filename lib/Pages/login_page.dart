@@ -1,12 +1,14 @@
+import 'package:flutter/material.dart';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:connectivity/connectivity.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:ieeepecstudentdeadline/Widgets/buttons.dart';
 import 'package:ieeepecstudentdeadline/constants.dart';
-import 'package:ieeepecstudentdeadline/pages/home_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import 'package:ieeepecstudentdeadline/Widgets/buttons.dart';
+import 'package:ieeepecstudentdeadline/pages/home_page.dart';
 
 class LoginPage extends StatefulWidget {
   static const String routeName = "/login-page";
@@ -46,6 +48,7 @@ Widget formFields(
         }
         return null;
       },
+      //keyboardType: TextInputType.numberWithOptions(signed: false,decimal: false),
       controller: editingController,
       decoration: InputDecoration(
         prefixIcon: preIcon,
@@ -61,8 +64,8 @@ Widget formFields(
 class _LoginPageState extends State<LoginPage> {
   // text Editing Controllers
   final TextEditingController _nameInputController = TextEditingController();
-  final TextEditingController _contactInputController = TextEditingController();
   final TextEditingController _SIDInputController = TextEditingController();
+  final TextEditingController _contactInputController = TextEditingController();
   final TextEditingController _collegeNameInputController =
       TextEditingController();
 
@@ -108,9 +111,12 @@ class _LoginPageState extends State<LoginPage> {
         context: context,
         builder: (context) {
           return AlertDialog(
+            backgroundColor: LightTheme,
             title: Text(
               'Internet Connecion Error',
-              style: TextStyle(fontFamily: 'Montserrat'),
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                  fontFamily: 'Montserrat', fontWeight: FontWeight.bold),
             ),
             content: Text(
               'Please check your internet connection',
@@ -120,7 +126,8 @@ class _LoginPageState extends State<LoginPage> {
               FlatButton(
                 child: Text(
                   'Close',
-                  style: TextStyle(fontFamily: 'Montserrat'),
+                  style: TextStyle(
+                      fontFamily: 'Montserrat', color: CustomTheme),
                 ),
                 onPressed: () {
                   Navigator.pop(context);
@@ -188,8 +195,8 @@ class _LoginPageState extends State<LoginPage> {
             .setData({
           'studentName': _nameInputController.text.toString().trim(),
           'studentSID': _SIDInputController.text.toString().trim(),
-          'firebaseID': firebaseUser.uid,
           'contactNumber': _contactInputController.text.toString().trim(),
+          'firebaseID': firebaseUser.uid,
           'collegeName': _collegeNameInputController.text.toString().trim(),
           'proficiency': isSwitched.toString(),
         });
@@ -204,12 +211,11 @@ class _LoginPageState extends State<LoginPage> {
           'studentSID',
           _SIDInputController.text.toString().trim(),
         );
-        await prefs.setString('firebaseID', currentUser.uid);
-//
         await prefs.setString(
           'contactNumber',
           _contactInputController.text.toString().trim(),
         );
+        await prefs.setString('firebaseID', currentUser.uid);
         await prefs.setString(
           'collegeName',
           _collegeNameInputController.text.toString().trim(),
@@ -222,8 +228,8 @@ class _LoginPageState extends State<LoginPage> {
         // Write data to local
         await prefs.setString('studentName', documents[0]['studentName']);
         await prefs.setString('studentSID', documents[0]['studentSID']);
-        await prefs.setString('firebaseID', documents[0]['firebaseID']);
         await prefs.setString('contactNumber', documents[0]['contactNumber']);
+        await prefs.setString('firebaseID', documents[0]['firebaseID']);
         await prefs.setString('collegeName', documents[0]['collegeName']);
         await prefs.setString('proficiency', documents[0]['proficiency']);
       }
@@ -271,8 +277,8 @@ class _LoginPageState extends State<LoginPage> {
                 formFields(
                   editingController: _contactInputController,
                   errorMessage: 'Please enter your contact number',
-                  hintText: 'Contact Number',
-                  preIcon: Icon(Icons.phone_android),
+                  hintText: 'Contact',
+                  preIcon: Icon(Icons.phone),
                 ),
                 formFields(
                   editingController: _collegeNameInputController,
@@ -312,7 +318,7 @@ class _LoginPageState extends State<LoginPage> {
                                 isSwitched = value;
                               });
                             },
-                            activeTrackColor: Color(0xffCBE7EA),
+                            activeTrackColor: LightTheme,
                             activeColor: Colors.white,
                           ),
                         ],
@@ -343,7 +349,9 @@ class _LoginPageState extends State<LoginPage> {
                           : Text(
                               'Login',
                               style: TextStyle(
-                                  fontFamily: 'Montserrat', fontSize: 15.0),
+                                  fontFamily: 'Montserrat',
+                                  color: Colors.black,
+                                  fontSize: 16.0),
                             ),
                     ),
                   ),
@@ -354,7 +362,7 @@ class _LoginPageState extends State<LoginPage> {
                           'Please wait',
                           style: TextStyle(
                             fontFamily: 'Montserrat',
-                            color: Color(0xff5cb3bc),
+                            color: CustomTheme,
                           ),
                         ),
                       )
