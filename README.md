@@ -1,4 +1,4 @@
-# ieeepecstudentdeadline
+# IEEE PEC Student Branch Android Application
 
 A new Flutter application.
 
