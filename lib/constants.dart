@@ -31,6 +31,7 @@ const String firestoreTeamMemberNameLabel = "Name";
 const String firestoreTeamMemberEmailIDLabel = "EmailID";
 const String firestoreTeamMemberPositionLabel = "Position";
 const String firestoreTeamMemberContactLabel = "Contact";
+const String firestoreTeamMemberPriorityLabel = "priority";
 
 const String firestoreNewsTitleLabel = "Title";
 const String firestoreNewsDescriptionLabel = "Description";

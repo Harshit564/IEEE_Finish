@@ -52,7 +52,7 @@ class _TeamMembersPageState extends State<TeamMembersPage> {
                     final memberPosition =
                         member.data[firestoreTeamMemberPositionLabel];
                     final memberImageUrl = member.data[firestoreImageUrl];
-                    final priority = member.data['priority'];
+                    final priority = member.data[firestoreTeamMemberPriorityLabel];
 
                     final memberListTile = IndMemberListTile(
                       imageUrl: memberImageUrl,
@@ -65,6 +65,13 @@ class _TeamMembersPageState extends State<TeamMembersPage> {
 
                     memberListTiles.add(memberListTile);
                     memberListTiles.sort((m1, m2) {
+                      int k1 = m1.priority;
+                      int k2 = m2.priority;
+                      print("Hello!");
+                      print(m1.memberPosition);
+                      print("Hello!");
+                      print(m2.memberPosition);
+                      print("Hello!");
                       return m1.priority.compareTo(m2.priority);
                     });
                   }

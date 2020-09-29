@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:liquid_swipe/Constants/Helpers.dart';
+import 'package:liquid_swipe/Helpers/Helpers.dart';
 import 'package:liquid_swipe/liquid_swipe.dart';
 
 import 'package:ieeepecstudentdeadline/OnBoardingPages/page_one.dart';
@@ -15,7 +15,7 @@ class OnboardingScreen extends StatefulWidget {
 }
 
 class _OnboardingScreenState extends State<OnboardingScreen> {
-  UpdateType updateType;
+
 
   final pages = [
     Container(child: PageOne()),
